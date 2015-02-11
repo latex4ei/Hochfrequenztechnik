@@ -1,0 +1,50 @@
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Einheit \\ \midrule
+Determinante S-Matrix & $\Delta_S$ &  \\
+Determinante WT-Matrix & $\Delta_\Sigma$ &  \\
+\bottomrule
+\end{tabular}
+\end{center}
+Hin- und rücklaufende Wellen werden durch die Transmissionsmatrix linear verknüpft. Werden mehrere Vierpole betrachtet, so ist die Gesamttransmissionsmatrix $\Sigma_p$ das Produkt der einzelnen $\Sigma$-Matrizen.
+\begin{center}
+\begin{tikzpicture}[scale=0.3, every node/.style={scale=0.8}]
+\input{bilder/wellentransmissionsmatrix.tex}
+\end{tikzpicture}
+\end{center}
+\begin{align*}
+\left( \begin{array}{c}
+b_1 \\ 
+a_1
+\end{array} \right) &= \left[
+\begin{array}{cc}
+\Sigma_{11} & \Sigma_{12} \\ 
+\Sigma_{21} & \Sigma_{22}
+\end{array} \right] \cdot
+\left( \begin{array}{c}
+a_2 \\ 
+b_2
+\end{array} \right) \\
+\end{align*}
+
+\begin{description}
+\item[S-Parameter $\longmapsto$ Transmissionsmatrix]
+\renewcommand{\arraystretch}{1.6}
+\begin{align*}
+\begin{array}{cc}
+\Sigma_{11} = - \frac{\Delta_S}{S_{21}} & \Sigma_{12} = \frac{S_{11}}{S_{21}} \\ 
+\Sigma_{21} = - \frac{S_{22}}{S_{21}} & \Sigma_{22} = \frac{1}{S_{21}} \\
+\Delta_S = S_{11}S_{22} - S_{12}S_{21} &
+\end{array}
+\end{align*}
+
+\item[Transmissionsmatrix $\longmapsto$ S-Parameter]
+\begin{align*}
+\begin{array}{cc}
+S_{11} = \frac{\Sigma_{12}}{\Sigma_{22}} & S_{12} = \frac{\Delta_\Sigma}{\Sigma_{22}} \\
+S_{21} = \frac{1}{\Sigma_{22}} & S_{22} = - \frac{\Sigma_{21}}{\Sigma_{22}} \\
+\Delta_\Sigma = \Sigma_{11}\Sigma_{22} - \Sigma_{12}\Sigma_{21} &
+\end{array}
+\end{align*}
+\renewcommand{\arraystretch}{1}
+\end{description}

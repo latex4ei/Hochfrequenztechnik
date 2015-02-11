@@ -1,0 +1,134 @@
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Einheit \\ \midrule
+Größte Antennenabmessung & $D$ & \si{\meter} \\
+Isotrope Leistungsdichte & $S_I$ & \si{\watt\per\meter^2} \\
+Leistungsdichte & $S$ & \si{\watt\per\meter^2} \\
+Abgestrahlte Leistung & $P_t$ & \si{\watt} \\
+Zugeführte Leistung & $P_{t0}$ & \si{\watt} \\
+Abstand zur Antenne & $r$ & \si{\meter} \\
+Äquivalenter Raumwinkel & $\Omega_a$ & \si{\srad} \\
+Öffnungswinkel & $\varphi$, $\vartheta$ & \si{\rad} \\
+Wirkungsgrad & $\eta$ & \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\highlight{schritte}{Beschreibung einer Antenne durch äquiv. Ströme im Freiraum}{
+\begin{enumerate}
+\item Huygensfläche wählen, meistens direkt auf Antennenoberfläche.
+
+\item Normalenvektor bestimmen, z.\,B. $\vec{n} = \vec{e}_z$. Zeigt ins Lösungsgebiet.
+
+\item Ströme aus gegebenem Feld berechnen:
+\begin{equation*}
+\vec{J}_A (\vec{r}') = \vec{n} \times \vec{H}(\vec{r}') \qquad \vec{M}_A (\vec{r}') = - \vec{n} \times \vec{E}(\vec{r}')
+\end{equation*}
+
+\item Umrechnung zwischen $\vec{J}_A$ und $\vec{M}_A$ über
+\begin{equation*}
+\vec{E}_i = \vec{H}_j Z_F \qquad \vec{H}_j = \frac{\vec{E}_i}{Z_F}
+\end{equation*}
+wobei $\vec{E}_i \times \vec{H}_j$ in Ausbreitungsrichtung zeigen muss. \todo{verifizieren}
+
+\item Volumen innerhalb Huygensfläche mit PEC/PMC füllen.
+
+\item Spiegelungsprinzip anwenden, ab jetzt im Freiraum.
+
+\item Mit einer Greenschen Funktion oder mit nachfolgenden Vektorpotentialen können nun die jeweiligen Feldkomponenten bestimmt werden.
+\end{enumerate}
+}
+
+
+\begin{description}
+\item[Nahfeld und Fernfeld]
+\begin{align*}
+\vec{A} (\vec{r}) &= \mu \frac{e^{-jkr}}{4\pi r} \iiint\limits_V \vec{J} (\vec{r}') \exp\left(jk\frac{\vec{r}' \cdot \vec{r}}{r} \right) dV \\
+\vec{F} (\vec{r}) &= \epsilon \frac{e^{-jkr}}{4\pi r} \iiint\limits_V \vec{M} (\vec{r}') \exp\left(jk\frac{\vec{r}' \cdot \vec{r}}{r} \right) dV \\
+\rot{\vec{A}} &\approx -jk\vec{e}_r \times \vec{A} \qquad \div{\vec{A}} = -jk\vec{e}_r \cdot \vec{A} \\
+\end{align*}
+\begin{equation*}
+\begin{array}{cc}
+\toprule
+\multicolumn{2}{c}{\text{Feldkomponenten im Fernfeld für elektrische Ströme}} \\ 
+\midrule
+H_{r,1} = 0 & E_{r,1} = 0 \\ 
+H_{\vartheta,1} = \frac{jk}{\mu} A_\varphi & E_{\vartheta,1} = -j\omega A_\vartheta = Z_F H_{\varphi,1} \\ 
+H_{\varphi,1} = - \frac{jk}{\mu} A_\vartheta & E_{\varphi,1} = -j\omega A_\varphi = - Z_F H_{\vartheta,1} \\ 
+\bottomrule
+\end{array}
+\end{equation*}
+\begin{equation*}
+\begin{array}{cc}
+\toprule
+\multicolumn{2}{c}{\text{Feldkomponenten im Fernfeld für magnetische Ströme}} \\
+\midrule
+E_{r,2} = 0 & H_{r,2} = 0 \\ 
+E_{\vartheta,2} = - \frac{jk}{\epsilon} F_\varphi = Z_F H_{\varphi,2} & H_{\vartheta,2} = -j\omega F_\vartheta \\ 
+E_{\varphi,2} = \frac{jk}{\epsilon} F_\vartheta = -Z_F H_{\vartheta,2} & H_{\varphi,2} = -j\omega F_\varphi \\
+\bottomrule
+\end{array}
+\end{equation*}
+
+\begin{equation*}
+\underbrace{r_1}_\text{Reaktives Nahfeld} < \frac{\lambda}{2\pi} < \underbrace{r_2}_\text{Strahlendes Nahfeld} < \frac{2D^2}{\lambda} < \underbrace{r_3}_\text{Fernfeld}
+\end{equation*}
+
+\item[Vektorpotential des elektrischen und magnetischen Stromelements]
+\begin{align*}
+\vec{A} (\vec{r}) &= \mu I l \frac{e^{-jkr}}{4\pi r} \vec{e}_z \\
+\vec{F} (\vec{r}) &= \epsilon I_m l \frac{e^{-jkr}}{4\pi r} \vec{e}_z
+\end{align*}
+
+\item[Äquivalenz Ringstrom -- Stromelement]
+\begin{equation*}
+I_m \vec{l} = j\omega\mu I\;d\vec{A} \qquad I \vec{l} = j\omega\epsilon I_m\;d\vec{A}
+\end{equation*}
+
+\item[Hauptstrahlrichtung] Meistens reicht es aus, durch Ausprobieren verschiedener Winkel wie $\frac{\pi}{2}$ die enthaltenen Sinus/Kosinus-Terme zu maximieren. Dies ist dann die Hauptstrahlrichtung.
+
+\item[Strahlungscharakteristik] Falls $sin(\vartheta)$, dann Hertz'scher Dipol
+\begin{equation*}
+C (\vartheta,\varphi) = \left| \frac{E(\vartheta,\varphi)}{E_\text{max}} \right| = \left| \frac{H(\vartheta,\varphi)}{H_\text{max}} \right|
+\end{equation*}
+
+\item[Isotroper Kugelstrahler] Gleichmäßige Abstrahlung in alle Richtungen
+\begin{equation*}
+S_I = \frac{P_t}{4\pi r^2}
+\end{equation*}
+
+\item[3D-Sektorstrahler] Gleichmäßige Abstrahlung in bestimmte Richtung
+\begin{align*}
+S &= \frac{P_t}{r^2 \varphi \vartheta} =\frac{P_t}{r^2 \Omega_a}
+\end{align*}
+
+\item[Gain/Gewinn]
+\begin{equation*}
+G_t = \left( \frac{S}{S_I} \right)_{P_{t0}} \text{ , } \frac{g_t}{\si{\dBi}} = 10\log{G_t}
+\end{equation*}
+
+\item[Directivity/Richtfaktor]
+\begin{equation*}
+D_t = \left(\frac{S}{S_I}\right)_{P_{t}} = \frac{G_t}{\eta} \text{ , } \frac{d_t}{\si{\dBi}} = 10\log{D_t}
+\end{equation*}
+Berechnung von $D$ aus der Strahlungscharakteristik $C$:
+\begin{align*}
+D &= \frac{4\pi}{\iint |C(\varphi,\vartheta)|^2 \sin \vartheta d\vartheta d\varphi} = \frac{4\pi}{\Omega_a} \approx \frac{4\pi}{\varphi_\text{3dB} \vartheta_\text{3dB}}
+\end{align*}
+
+\item[Effektive Wirkfläche]
+\begin{align*}
+A_e &= \frac{P_{r,\text{max}}}{S} \\
+A_0 &= \frac{P_{r0,\text{max}}}{S}
+\end{align*}
+
+\item[Friis Equation]
+\begin{equation*}
+P_{r\text{,max}} = S G_2 \frac{\lambda^2}{4 \pi} = P_{t0} G_1 G_2 \left( \frac{\lambda}{4\pi r} \right)^2
+\end{equation*}
+
+\item[Dämpfung einer Funkverbindung]
+\begin{equation*}
+a = -10 \log{\frac{P_{r\text{,max}}}{P_{t0}}} = \underbrace{20\log{\frac{4\pi r}{\lambda}}}_{\text{Freiraumdämpfung } a_0} - 10\log{G_1} - 10\log{G_2}
+\end{equation*}
+\end{description}

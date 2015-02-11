@@ -1,0 +1,22 @@
+%\node [contact] (contact 1) at (0,2) {};
+%\node [contact] (contact 2) at (6,2) {};
+%\node [contact] (contact 3) at (3,2) {};
+%
+%\draw (contact 1) to [inductor={info'=$L_s$, midway}] (contact 3) to [capacitor={info'=$C$,midway}] (contact 2);
+%\draw (contact 3) --++(up:1) to [resistor={info=$G_p$}] ++(right:3) to (contact 2);
+
+%
+\node (C1) at (2.5,1.5) {};
+\node (C2) at (5,1.5) {};
+\node (L1) at (0,0) {};
+\node (L2) at (2.5,0) {};
+\node (R2) at (5,0) {};
+
+\draw (C1) to [R=$G_p$] (C2);
+\draw (L1) to [american inductor=$L_s$] (L2) to [C=$C$] (R2);
+
+\draw (C1) to [short, -*] (L2);
+\draw (C2) to [short, -*] (R2);
+
+\draw (L1) to [short, -o] ++(-0.75,0);
+\draw (R2) to [short, -o] ++(0.75,0);

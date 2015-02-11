@@ -1,0 +1,34 @@
+%\begin{center}
+%\begin{tabular}{ccc} \toprule
+%Bezeichnung & Symbol & Einheit \\ \midrule
+%Wellenwiderstand & $Z_F$ & \si{\ohm} \\
+%Brewsterwinkel (nur parallel) & $\theta_B$ &  \\
+%Wellenzahl & k & \\
+%Eindringtiefe & $\delta$ & \si{\meter} \\
+%Poynting-Vektor & $\vec{S}$ & $\si{\watt\per\meter^2}$ \\
+%\bottomrule
+%\end{tabular}
+%\end{center}
+
+\begin{description}
+\item[Allgemein]
+\begin{align*}
+U &= U_e + U_o \\
+\end{align*}
+
+\item[Gleichtakt (Even)] Gleichphasige Anregung an beiden Toren führt zur Aufhebung der Ströme in der Symmetrieebene.
+\begin{center}
+\begin{circuitikz}[scale=1, every node/.style={scale=1}]
+\input{bilder/even.tex}
+\end{circuitikz}
+\end{center}
+
+\item[Gegentakt (Odd)] Gegenphasige Anregung an beiden Toren führt zur Aufhebung der Spannungen in der Symmetrieebene.
+\begin{center}
+\begin{circuitikz}[scale=1, every node/.style={scale=1}]
+\input{bilder/odd.tex}
+\end{circuitikz}
+\end{center}
+
+\item[Bauteile in Symmetrieebene] Befindet sich z.\,B. eine Impedanz $Z$ genau in der Ebene, so wird für die Analyse der Wert $2Z$ verwendet. Denn sobald man zwei Impedanzen mit Wert $2Z$ parallelschaltet, ergibt sich wieder $Z$.
+\end{description}

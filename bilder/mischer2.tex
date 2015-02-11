@@ -1,0 +1,29 @@
+\def\y{1.5};
+\def\x{3};
+
+\begin{scope}
+\draw[->] (\x ,0) ++(-1,0) --++(0,\y -0.5) node [above] {$f_\text{LO}$};
+\filldraw[color=black,fill=black!20] (\x ,0) ++(-0.5,0)--++(0,\y -0.75)--++(0.3,-0.3)--++(0,-0.45);
+\draw[|-|] (\x ,0) ++(-1.008,0)--++(0.516,0) node [midway,below] {ZF};
+
+
+\filldraw[color=black,fill=black!20] ++(0.5,0)--++(0,\y -0.75)--++(0.3,-0.3)--++(0,-0.45);
+\draw[|-|] (-0.006,0)--++(0.513,0) node [midway,below] {ZF};
+
+\draw[<->] (0,\y) node[left] {$P$} -- (0,0) --  (\x ,0) node[below] {$f$};
+
+\draw (\x /2,-0.7) node{Gleichlage: $f_\text{ZF} = f - f_\text{LO}$};
+\end{scope}
+
+\begin{scope}[xshift=4cm]
+\draw[->] (\x ,0) ++(-1,0) --++(0,\y -0.5) node [above] {$f_\text{LO}$};
+\filldraw[color=black,fill=black!20] (\x ,0) ++(-1.8,0)--++(0,\y -0.75)--++(0.3,-0.3)--++(0,-0.45);
+\draw[|-|] (\x ,0) ++(-1.508,0)--++(0.516,0) node [midway,below] {ZF};
+
+
+\filldraw[color=black,fill=black!20] ++(0.5,0)--++(0,\y -1.05)--++(0.3,00.3)--++(0,-0.75);
+\draw[|-|] (-0.006,0)--++(0.513,0) node [midway,below] {ZF};
+
+\draw[<->] (0,\y) node[left] {$P$} -- (0,0) --  (\x ,0) node[below] {$f$};
+\draw (\x /2,-0.7) node{Kehrlage: $f_\text{ZF} = f_\text{LO} - f$};
+\end{scope}

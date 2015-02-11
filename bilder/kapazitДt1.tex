@@ -1,0 +1,29 @@
+\node [contact] (contact 1) at (0,2) {};
+\node [contact] (contact 2) at (6,2) {};
+\node [contact] (contact 3) at (3,2) {};
+
+\draw (contact 1) to [inductor={info'=$L_s$, midway}] (contact 3) to [capacitor={info'=$C$,midway}] (contact 2);
+\draw (contact 3) --++(up:1) to [resistor={info=$G_p$}] ++(right:3) to (contact 2);
+
+%
+%\draw (0.5,-0.5) rectangle(2.5,2);
+%
+%\draw (contact 1) -- ++(0.5,0);
+%\draw (contact 1') -- ++(0.5,0);
+%\draw (contact 2) -- ++(-0.5,0);
+%\draw (contact 2') -- ++(-0.5,0);
+%
+%\node [text centered, font=\huge] at (1.5,0.75) {$\underline{S}$};
+%
+%\draw (contact 2) -- ++(right:0.7) to [resistor={info=$Z_\text{Last}$}] ++(down:1.5)
+%to (contact 2');
+%
+%\draw [->] (contact 1')  ++(-0.2,-0.5) -- ++(0,1.25) -- ++(-0.2,0);
+%\draw [->] (contact 1')  ++(0.2,-0.5) -- ++(0,1.25) -- ++(0.2,0);
+%\node[label=left:$\Gamma_E$] at (-0.2,-0.5) {};
+%\node[label=below:$\Gamma_1$] at (0.2,-0.5) {};
+%
+%\draw [->] (contact 2')  ++(-0.2,-0.5) -- ++(0,1.25) -- ++(-0.2,0);
+%\draw [->] (contact 2')  ++(0.2,-0.5) -- ++(0,1.25) -- ++(0.2,0);
+%\node[label=below:$\Gamma_2$] at (2.8,-0.5) {};
+%\node[label=right:$\Gamma_\text{Last}$] at (3.2,-0.5) {};

@@ -1,0 +1,79 @@
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Einheit \\ \midrule
+Güte des Elements & $Q$ & \\
+\SI{3}{\dB}-Bandbreite & $B_\text{\SI{3}{\dB}}$ & \si{\hertz} \\
+Transitfrequenz & $f_T$ & \si{\hertz} \\
+Gleichstromverstärkung & $B$ & \\
+Koppeldämpfung & $a_K$ & \si{\dB} \\
+Durchlassdämpfung & $a_B$ & \si{\dB} \\
+Richtdämpfung & $a_R$ & \si{\dB} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{description}
+\item[Schwingkreise]
+\begin{align*}
+f_\text{res} = \frac{1}{2\pi \sqrt{LC}} \\
+Q_K = \frac{f_\text{res}}{B_\text{\SI{3}{\dB}}} \\
+Q_\text{Parallel} = R \sqrt{\frac{C}{L}}\\
+Q_\text{Serie} = \frac{1}{R} \sqrt{\frac{L}{C}}
+\end{align*}
+
+% HFVO Folien 24-28
+\item[Bipolar-Transistor] HF-Ersatzschaltbild nach Giacoletto
+\begin{center}
+\begin{circuitikz}[scale=1.35, every node/.style={scale=1}]
+\input{bilder/bipolar-esb.tex}
+\end{circuitikz}
+\end{center}
+\begin{align*}
+S &\approx \frac{I_{E,gl}}{U_T}\\
+C_{B',E} &\approx \frac{S}{2\pi f_T}\\
+\frac{1}{R_{B',E}} &= G_{B',E} \approx \frac{S}{\beta_0}\\
+\beta_0 &= \left.\frac{I_C}{I_B}\right\vert_{f \rightarrow 0} \approx \frac{I_{C,gl}}{I_{B,gl}} = B
+\end{align*}
+Bei $f_T$ gilt $\beta = 1$.
+
+\item[Betriebsart A] AP liegt mitten in der Kennlinie, im Idealfall keine Nichtlinearitäten. $\eta \leq 0,5$.
+\item[Betriebsart B] AP liegt am Rand der Kennlinie, Erzeugung von zu filternden Harmonischen. Keine Verluste bei fehlender Aussteuerung, $\eta \approx 0,786$.
+\item[Betriebsart C] AP liegt außerhalb der Kennlinie, Erzeugung von zu filternden Harmonischen. Noch weniger Aussteuerung als B $\eta \approx 0,9$.
+\item[Betriebsart D] AP liegt noch weiter außerhalb der Kennlinie, arbeitet nun als Schalter (Delta-Sigma). Durch Schaltvorgänge entstehen weitere Spektralanteile.
+
+\item[Richtkoppler] \strut
+\begin{center}
+\begin{circuitikz}[scale=0.4, every node/.style={scale=1}]
+\input{bilder/richtkoppler.tex}
+\end{circuitikz}
+\end{center}
+\begin{align*}
+a_K &= -10\log_\text{10} \frac{P_2}{P_1} = -20\log_\text{10} |S_{21}| \\
+a_B &= -10\log_\text{10} \frac{P_3}{P_1} = -20\log_\text{10} |S_{31}| \\
+a_R &= -10\log_\text{10} \frac{P_4}{P_2} =  -20\log_\text{10} \left\vert\frac{S_{41}}{S_{21}}\right\vert \qquad \text{möglichst groß, über \SI{40}{\dB}}
+\end{align*}
+Streuparameter eines idealen \SI{3}{\dB}-Kopplers:
+\begin{equation*}
+\PKOLmatrix{S} = \frac{1}{\sqrt{2}} \left[ \begin{matrix}
+0 & 1 & -j & 0 \\ 
+1 & 0 & 0 & -j \\ 
+-j & 0 & 0 & 1 \\ 
+0 & -j & 1 & 0 \\ 
+\end{matrix} \right] \\
+\end{equation*}
+
+\item[Planare Resonatoren]
+Bei kapazitiver Anordnung des Ringresonators wie hier entstehen Spannungsmaxima an den Koppelpunkten.
+\begin{center}
+\begin{tikzpicture}[scale=0.5, every node/.style={scale=1}]
+\input{bilder/resonator1.tex}
+\end{tikzpicture}
+\end{center}
+\begin{equation*}
+f_\text{res} = n \cdot \frac{c_0}{D \pi \sqrt{\epsilon_{r,\text{eff}}}} \\
+\end{equation*}
+
+\item[Hohlraumresonatoren]
+\begin{equation*}
+f_{mnq} = \frac{\sqrt{ \left( \frac{m}{a} \right)^2 + \left( \frac{n}{b} \right)^2 + \left( \frac{q}{c} \right)^2}}{2\sqrt{\epsilon_0 \epsilon_r \mu_0 \mu_r}}
+\end{equation*}
+\end{description}

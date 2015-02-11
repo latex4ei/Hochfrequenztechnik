@@ -1,0 +1,53 @@
+\subsection*{Allgemeine Formeln}
+Viele Größen können komplex werden und werden daher nicht gesondert markiert, $U$ ist z.B. die komplexe Spannungsamplitude.
+
+\begin{description}
+\item[Impedanz]
+\begin{equation*}
+Z = R + jX
+\end{equation*}
+
+\item[Admittanz]
+\begin{equation*}
+Y = G + jB
+\end{equation*}
+
+\item[Impedanz bestimmt Verhältnis von $U,I$]
+\begin{equation*}
+Z = \frac{U}{I}
+\end{equation*}
+
+\item[Scheinleistung]
+\begin{equation*}
+|P_S| = \left\vert P_W + j P_B \right\vert = \sqrt{P_W^2 + P_B^2} = \frac{1}{2} |U||I|\\
+\end{equation*}
+
+\item[Leistungsanpassung] Erlaubt maximale Leistungsübertragung
+\begin{equation*}
+Z = Z^*_i
+\end{equation*}
+
+\item[Abgegebene Generatorleistung]
+\begin{equation*}
+P_G = |a_G|^2 \frac{1-|\Gamma_1|^2}{|1-\Gamma_E\Gamma_1|^2}
+\end{equation*}
+
+\item[Maximale verfügbare Generatorleistung] Innenwiderstand $R_i = \Re\left\{Z_i\right\}$
+\begin{equation*}
+P_\text{max} = \frac{|U_0|^2}{8R_i} = \frac{|a_G|^2}{1-|\Gamma_1|^2}
+\end{equation*}
+
+\item[Prinzip der durchgehenden Wirkleistung] Gültig bei verlustlosen Zweitoren. Wenn ein Zweitor verlustbehaftet ist, wird es durch das Vorziehen der verlustbehafteten Komponenten wieder verlustfrei.
+\begin{align*}
+\left\vert \frac{U_n}{U_1} \right\vert = \sqrt{\frac{G_1}{G_n}} \\
+\left\vert \frac{I_n}{I_1} \right\vert = \sqrt{\frac{R_1}{R_n}} \\
+\end{align*}
+Da $R \neq \frac{1}{G}$ erfolgt die Umrechnung zwischen $R$ und $G$ durch die folgenden Näherungsformeln:
+
+\begin{tabular}{ccc}
+$G \gg |B|$ & $R \approx \frac{1}{G}$ & $X \approx - \frac{B}{G^2}$ \\
+$|B| \gg G$ & $R \approx \frac{G}{B^2}$ & $X \approx - \frac{1}{B}$ \\
+$R \gg |X|$ & $G \approx \frac{1}{R}$ & $B \approx - \frac{X}{R^2}$ \\
+$|X| \gg R$ & $G \approx \frac{R}{X^2}$ & $B \approx - \frac{1}{X}$ \\
+\end{tabular}
+\end{description}

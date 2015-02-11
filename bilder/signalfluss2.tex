@@ -1,0 +1,55 @@
+%\node (1) at (0,0) {};
+%\node (2) at (0,-1) {};
+%\node (3) at (2,0) {};
+%\node (4) at (2,-1) {};
+%\node (F2) at (2,-1) {};
+%\node (G1) at (3,0) {};
+%\node (G2) at (3,-1) {};
+%\node (H1) at (4,0) {};
+%\node (H2) at (4,-1) {};
+%\node (I1) at (5,0) {};
+%\node (I2) at (5,-1) {};
+%\node (C) at (6,0) {};
+%\node (E1) at (0,-1) {};
+%\node (E2) at (6,-1) {};
+%
+%\draw (B) to [R=$R_{BB'}$, o-*] (B'1);
+%%\par\ctikzset{voltage/distance from node/.initial=3}
+%\draw (B'1) to [R=$R_{B'E}$, v>=$U_{B'E}$, *-*] (B'2);
+%\draw (F1) to [C=$C_{B'E}$, *-*] (F2);
+%\draw (G1) to [R=$R_{CE}$, *-*] (G2);
+%\draw (H1) to [C=$C_{CE}$, *-*] (H2);
+%\draw (F1) to [R=$R_{B'C}$, *-*] (G1);
+%\draw (I1) to [csI=$S\cdot U_{B'E}$, *-*] (I2);
+%\draw (F1) --++(up:0.6) to [C=$C_{B'C}$] ++(right:1) to (G1);
+%
+%\draw (B'1) to [short] (F1);
+%\draw (G1) to[short,-o] (C);
+%\draw (E1) to[short, o-o] (E2);
+%
+%\draw (B) node [left] {B};
+%\draw (E1) node [left] {E};
+%\draw (E2) node [right] {E};
+%\draw (C) node [right] {C};
+%\draw (B'1) node [above] {B'};
+
+\par\ctikzset{quadpoles/zweitor/height=.5}
+\draw (0,0) node[zweitor] (G) {}
+(G.A1) node[anchor=south] {1}
+(G.A2) node[anchor=north] {2}
+(G.B1) node[anchor=south] {3}
+(G.B2) node[anchor=north] {4}
+%(G.base) node[anchor=north] {\huge$\PKOLmatrix{S}$}
+;
+
+\draw (G.A1) to [short, *-, i_<=$P_1$] ++(-2,0) to [R, l_=$Z_L$] ++(-2,0) to [sV] ++(-2,0) to [short] ++(-0.5,0) node[rground] {};
+\draw (G.A2) to [short, *-, i_=$P_2$] ++(-2,0) to [R, l_=$Z_L$] ++(-2,0) to [short] ++(-0.5,0) node[rground] {};
+\draw (G.B1) to [short, *-, i=$P_3$] ++(2,0) to [R=$Z_L$] ++(2,0) to [short] ++(0.5,0) node[rground] {};
+\draw (G.B2) to [short, *-, i=$P_4$] ++(2,0) to [R=$Z_L$] ++(2,0) to [short] ++(0.5,0) node[rground] {};
+
+\draw (G.A1) to [short] (G.B1);
+\draw (G.A2) to [short] (G.B2);
+
+\draw[|->] (G.base) ++(0,-0.9) --+(135:1);
+\draw[->] (G.base) ++(0,-0.9) --+(315:1);
+%\draw (G.base) ++(0,-1.5) ++(-0.5,-0.5) --++(1,1);

@@ -1,0 +1,87 @@
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Einheit \\ \midrule
+Güte des Elements & $Q$ & \\
+Verlustwinkel & $\delta$ & \\
+Scheinbare Induktivität & $L^*$ & \si{\henry} \\
+Scheinbare Kapazität & $C^*$ & \si{\farad} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{description}
+\item[Widerstand] Vereinfachend für kleine $R$ nur $L_s$ und für große $R$ nur $C_p$.
+\begin{center}
+\begin{circuitikz}[scale=0.5, every node/.style={scale=1}]
+\input{bilder/widerstand1.tex}
+\end{circuitikz}
+\end{center}
+\begin{align*}
+Z_\text{ideal} &= j \omega L \\
+Z_\text{real} &= \frac{j\omega L}{1 - \omega^2 LC_p} \\
+Q_L &= \frac{\omega L}{R_s} = \frac{1}{\tan \delta_L} \\
+R_s &= R_\text{Fe} + R_\text{Cu} = \omega L \tan\delta_\mu + R_\text{Cu} \\
+L^* &= \frac{L}{1-\omega^2 C_p L} > L
+\end{align*}
+
+\item[Induktivität] Wird $\mu_r$ erhöht, so steigt $L$. Überhalb der Resonanzfrequenz verhält sich die reale Induktivität kapazitiv.
+\begin{center}
+\begin{circuitikz}[scale=0.5, every node/.style={scale=1}]
+\input{bilder/induktivitaet1.tex}
+\end{circuitikz}
+\end{center}
+\begin{align*}
+Z_\text{ideal} &= j \omega L \\
+Z_\text{real} &= \frac{j\omega L}{1 - \omega^2 LC_p} \\
+Q_L &= \frac{\omega L}{R_s} = \frac{1}{\omega L G_p} = \frac{1}{\tan \delta_L} \\
+R_s &= R_\text{Fe} + R_\text{Cu} = \omega L \tan\delta_\mu + R_\text{Cu} \\
+L^* &= \frac{L}{1-\omega^2 C_p L} > L
+\end{align*}
+
+\item[Induktivität durch kurzgeschlossene Leitung]
+\begin{align*}
+Z &= jX = j Z_L \tan( \beta l)
+\intertext{falls $l \ll \lambda_0$}
+X &= \omega L' l \\
+\end{align*}
+
+\item[Kapazität] Überhalb der Resonanzfrequenz verhält sich die reale Kapazität induktiv.
+\begin{center}
+\begin{circuitikz}[scale=0.5, every node/.style={scale=1}]
+\input{bilder/kapazitaet1.tex}
+\end{circuitikz}
+\end{center}
+\begin{align*}
+Y_\text{ideal} &= j \omega C \\
+Y_\text{real} &= \frac{j \omega C}{1 - \omega^2 L_sC} \\
+Q_C &= \frac{\omega C}{G_p} = \frac{1}{\omega C R_s} = \frac{1}{\tan \delta_C} \\
+\tan \delta_C &= \frac{\epsilon_r''}{\epsilon_r'} \text{ für homogenes Dielektrikum}\\
+C^* &= \frac{C}{1 - \omega^2 L_s C} > C \\
+\end{align*}
+
+\item[Kapazität durch leerlaufende Leitung]
+\begin{align*}
+Y &= jB = j \frac{1}{Z_L} \tan( \beta l)
+\intertext{falls $l \ll \lambda_0$}
+B &= \omega C' l \\
+\end{align*}
+
+% HFVO Folie 12
+\item[Schottky-Diode] Metall-Halbleiter-Übergang, fehlende Minoritätsträger ermöglichen Nutzung für höchste Frequenzen. Anwedungen: Gleichrichter, Detektoren, Mischer.
+
+% HFVO Folie 14
+\item[Kapazitätsdiode] Betrieb in Sperrrichtung. Hohe Sperrspannung bedeutet niedrige Kapazität und umgekehrt. Anwendungen: Abstimmung von Schwingkreisen, Filtern.
+
+% HFVO Folie 15
+\item[Tunneldiode] Kennlinie besitzt wegen Tunneleffekt Abschnitt mit negativem Widerstand. Kurzschlussstabil. Anwendung: Breitbandige Verstärkung von Signalen.
+
+% HFVO Folie 16
+\item[Impatt-Diode] Kennlinie besitzt durch Laufzeitverzerrungen Abschnitt mit negativem Widerstand. Anwendung: Verstärkung von Signalen.
+
+% HFVO Folie 20
+\item[PIN-Diode] Erzeugt mittels eines Gleichstroms einen Wechselstromwiderstand. Anwendungen: HF-Schalter, Wellenwiderstandsanpassung.
+
+% HFVO Folie 23
+\item[Gunn-Element] Durch Gunn-Effekt entsteht ein Kennlinienabschnitt mit negativem Widerstand. Anwendung: Oszillator.
+
+\end{description}

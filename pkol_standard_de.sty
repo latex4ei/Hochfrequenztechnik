@@ -1,0 +1,28 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pkol_standard_de}[2013/02/16 Standard-Pakete fuer deutsche Dokumente]
+
+\RequirePackage[ngerman]{babel}
+
+\RequirePackage{lmodern}
+\RequirePackage{amsmath,amsfonts,amssymb}
+\RequirePackage{pkol_si}
+
+\RequirePackage[expansion=false]{microtype}
+\RequirePackage{
+	booktabs-de,
+	graphicx,
+	tikz,
+	xcolor
+	}
+
+
+\sisetup{
+	locale=DE,
+	list-final-separator = { und },
+	range-phrase = { bis },
+	%per-mode = fraction,
+	exponent-product = \cdot
+	}
+	
+%%
+\endinput

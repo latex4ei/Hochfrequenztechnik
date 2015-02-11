@@ -1,0 +1,83 @@
+%% Quellen
+% http://www.siart.de/lehre/mehrtore.pdf
+%
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Einheit \\ \midrule
+Hinlaufende Welle & $a$ & $\sqrt{\si{\watt}}$ \\
+Rücklaufende Welle & $b$ & $\sqrt{\si{\watt}}$ \\
+Bezugswiderstand & $Z_0$ & \si{\ohm} \\
+Betriebsleistungsverstärkung & $g_T$ & \\
+\bottomrule
+\end{tabular}
+
+\begin{tikzpicture}[scale=0.5, every node/.style={scale=1}]
+\input{bilder/torgroessen.tex}
+\end{tikzpicture}
+\end{center}
+
+\begin{description}
+\item[Torgrößen]
+\renewcommand{\arraystretch}{1.6}
+\begin{equation*}
+\begin{array}{cc}
+U = U_h + U_r &  I = I_h - I_r = \frac{U_h}{Z_0} - \frac{U_r}{Z_0}
+\end{array}
+\end{equation*}
+\begin{align*}
+a &= \frac{U + I Z_0}{2 \sqrt{Z_0}} = \frac{U_h}{\sqrt{Z_0}} = I_h \sqrt{Z_0} \\
+b &= \frac{U - I Z_0}{2 \sqrt{Z_0}} = \frac{U_r}{\sqrt{Z_0}} = I_r \sqrt{Z_0}
+\end{align*}
+\begin{equation*}
+\begin{array}{cc}
+U = \sqrt{Z_0} (a + b) & I = \frac{1}{\sqrt{Z_0}} (a - b) \\
+u = \frac{U}{\sqrt{Z_0}} = (a + b) & i = I \sqrt{Z_0} = (a - b) \\
+a = \frac{1}{2} (u+i) & b = \frac{1}{2} (u-i)
+\end{array}
+\end{equation*}
+\begin{align*}
+S &= \frac{1}{2} U I^* = \frac{1}{2}\left( |a|^2 - |b|^2 + ba^* - b^*a \right) \\
+P_W &= \Re\{S\} = \frac{1}{2} |a|^2 - \frac{1}{2} |b|^2
+\end{align*}
+
+\item[Abgegebene Generatorleistung]
+\begin{equation*}
+P_G = |a_G|^2 \frac{1-|\Gamma_1|^2}{|1-\Gamma_E\Gamma_1|^2}
+\end{equation*}
+
+\item[Maximale verfügbare Generatorleistung] Innenwiderstand $R_i = \Re\left\{Z_i\right\}$
+\begin{equation*}
+P_\text{max} = \frac{|U_0|^2}{8R_i} = \frac{|a_G|^2}{1-|\Gamma_1|^2}
+\end{equation*}
+
+\item[Prinzip der durchgehenden Wirkleistung] Gültig bei verlustlosen Zweitoren. Wenn ein Zweitor verlustbehaftet ist, wird es durch das Vorziehen der verlustbehafteten Komponenten wieder verlustfrei.
+\begin{align*}
+\left\vert \frac{U_n}{U_1} \right\vert = \sqrt{\frac{G_1}{G_n}} \\
+\left\vert \frac{I_n}{I_1} \right\vert = \sqrt{\frac{R_1}{R_n}} \\
+\end{align*}
+Da $R \neq \frac{1}{G}$ erfolgt die Umrechnung zwischen $R$ und $G$ durch die folgenden Näherungsformeln:
+\begin{equation*}
+\begin{array}{ccc}
+G \gg |B| & R \approx \frac{1}{G} & X \approx - \frac{B}{G^2} \\
+|B| \gg G & R \approx \frac{G}{B^2} & X \approx - \frac{1}{B} \\
+R \gg |X| & G \approx \frac{1}{R} & B \approx - \frac{X}{R^2} \\
+|X| \gg R & G \approx \frac{R}{X^2} & B \approx - \frac{1}{X} \\
+\end{array}
+\end{equation*}
+\renewcommand{\arraystretch}{1}
+
+\item[Beschaltete Zweitore] \strut
+\begin{center}
+\begin{circuitikz}[scale=1, every node/.style={scale=1}]
+\input{bilder/zweitor1.tex}
+\end{circuitikz}
+\end{center}
+\begin{align*}
+\Gamma_1 &= S_{11} + \frac{S_{12} S_{21} \Gamma_\text{Last}}{1 - S_{22} \Gamma_\text{Last}} \\
+\Gamma_\text{Last} &= \frac{Z_\text{Last} - Z_L}{Z_\text{Last} + Z_L} \\
+\Gamma_2 &= S_{22} + \frac{S_{12} S_{21} \Gamma_E}{1 - S_{11} \Gamma_E} \\
+\Gamma_E &= \frac{Z_i - Z_L}{Z_i + Z_L} \\
+Z_1 &= Z_0 \frac{1+\Gamma_1 }{1-\Gamma_1} \\
+g_T &= \frac{P_2}{P_1} = \frac{ |S_{21}|^2 (1-|\Gamma_E|^2) (1-|\Gamma_\text{Last}|^2) }{\left\vert (1-S_{11}\Gamma_E)(1-S_{22}\Gamma_\text{Last}) - S_{12}S_{21} \Gamma_\text{Last}\Gamma_E \right\vert ^2}
+\end{align*}
+\end{description}

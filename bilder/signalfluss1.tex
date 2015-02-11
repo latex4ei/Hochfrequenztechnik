@@ -1,0 +1,84 @@
+% Generator Schaltbild
+\begin{scope}
+\node (A1) at (0,0) {};
+\node (A2) at (0,-1.4) {};
+
+\draw (A1) to [R=$Z_i$, *-] ++(-1.4,0);
+\draw (A2) to [short, *-] ++(-1.4,0);
+\draw (A1)++(-1.4,0) to [sV=$U_0$] ($(A2)+(-1.4,0)$);
+
+\draw[->, decorate,decoration={snake,post length=1mm,amplitude=1mm, segment length=1.5mm}] (A1)++(-0.2,-0.4) --++ (0.5,0) node[very near end, below] {$a$};
+\draw[->, decorate,decoration={snake,post length=1mm,amplitude=1mm, segment length=1.5mm}] (A2)++(-0.2,0.4) ++(0.5,0) --++(-0.5,0) node[very near end, above] {$b$};
+\end{scope}
+
+
+% Generator Signalfluss
+\begin{scope}[shift={(0.5,0)}]
+\node (A1) at (0,0) {};
+\node (A2) at (1.5,0) {};
+\node (B) at (1.5,-1.4) {};
+
+\draw (A1) to [short, i_>=$\frac{1}{2}(1-\Gamma_E)$, *-*] (A2) to [short] ++(0.5,0);
+\draw (B) to [short, i_>=$\Gamma_E$, *-] (A2);
+
+\draw (A2) node[above] {$a$};
+\draw (B) node[below] {$b$};
+\end{scope}
+
+
+% Abschlusswiderstand Schaltbild
+\begin{scope}[shift={(4.2,0)}]
+\node (A1) at (0,0) {};
+\node (A2) at (0,-1.4) {};
+
+\draw (A1) to [short, *-] ++(0.7,0) to [R=$Z_\text{Last}$] ($(A2)+(0.7,0)$) to [short, -*] ++(-0.7,0);
+
+\draw[->, decorate,decoration={snake,post length=1mm,amplitude=1mm, segment length=1.5mm}] (A1)++(-0.2,-0.4) --++ (0.5,0) node[very near end, below] {$a$};
+\draw[->, decorate,decoration={snake,post length=1mm,amplitude=1mm, segment length=1.5mm}] (A2)++(-0.2,0.4) ++(0.5,0) --++(-0.5,0) node[very near end, above] {$b$};
+\end{scope}
+
+
+% Abschlusswiderstand Signalfluss
+\begin{scope}[shift={(5.7,0)}]
+\node (A1) at (0,0) {};
+\node (A2) at (0,-1.4) {};
+
+\draw (A1) to [short, *-] ++(0.7,0) to [short, i>=$\Gamma_\text{Last}$] ($(A2)+(0.7,0)$) to [short, -*] ++(-0.7,0);
+\end{scope}
+
+
+% Zweitor Schaltbild
+\begin{scope}[shift={(0.6,-2.4)}]
+\par\ctikzset{quadpoles/zweitor/height=0.6}
+\par\ctikzset{quadpoles/zweitor/width=2.0}
+\draw (0,0) node[zweitor] (G) {}
+(G.A1) node[anchor=south] {1}
+(G.A1) node[anchor=north] {}
+(G.A2) node[anchor=north] {1'}
+(G.B1) node[anchor=south] {2}
+(G.B1) node[anchor=north] {}
+(G.B2) node[anchor=north] {2'}
+(G.base) node[anchor=north] {\huge$\PKOLmatrix{S}$}
+;
+
+\draw (G.A1) to [short, *-] (G.A1);
+\draw (G.A2) to [short, *-] (G.A2);
+\draw (G.B1) to [short, *-] (G.B1);
+\draw (G.B2) to [short, *-] (G.B2);
+
+\draw[->, decorate,decoration={snake,post length=1mm,amplitude=1mm, segment length=1.5mm}] (G.A1)++(-0.6,-0.1) --++ (0.5,0) node[very near end, below] {$a_1$};
+\draw[->, decorate,decoration={snake,post length=1mm,amplitude=1mm, segment length=1.5mm}] (G.A2)++(-0.6,0.1) ++(0.5,0) --++(-0.5,0) node[very near end, above] {$b_1$};
+
+\draw[->, decorate,decoration={snake,post length=1mm,amplitude=1mm, segment length=1.5mm}] (G.B1)++(0.6,-0.1) --++ (-0.5,0) node[very near end, below] {$a_2$};
+\draw[->, decorate,decoration={snake,post length=1mm,amplitude=1mm, segment length=1.5mm}] (G.B2)++(0.1,0.1) --++(0.5,0) node[very near end, above] {$b_2$};
+\end{scope}
+
+% Zweitor Signalfluss
+\begin{scope}[shift={(4.2,-2.4)}]
+\node (A1) at (0,0) {};
+\node (B1) at (0,-0.9) {};
+\node (B2) at (2,0) {};
+\node (A2) at (2,-0.9) {};
+
+\draw (A1) node[above left] {$a_1$} to [short, i_>=$S_{11}$, *-] (B1) node[below left] {$b_1$} to [short, i_<=$S_{12}$, *-] (A2) node[below right] {$a_2$} to [short, i_>=$S_{22}$, *-] (B2) node[above right] {$b_2$} to [short, i_<=$S_{21}$, *-] (A1);
+\end{scope}

@@ -1,0 +1,231 @@
+%%%% Formelsammlung Hochfrequenztechnik
+%% 
+%% Ziel dieses Dokument ist es, für so viele HF-Vorlesungen der
+%% TUM wie möglich eine konsistente Formelsammlung zu bieten.
+%% Aktualisierungen/Kritik/... im EIIT-Forum (nix Facebook):
+%% http://www.eiit.de/v2/index.php?showtopic=21121
+%%
+%% Bisher sind erfasst (in Klammern Skriptversion):
+%% * Hochfrequenztechnik 1, HF1 (WS 2011/2012)			
+%% * Hochfrequenzschaltungen, HFS (SS 2012, Rev 180)		
+%% * Hochfrequenzsystemtechnik, HFST (WS 2011/2012)		
+%% * Technische Felder und Wellen, TFW (WS 2012/2013)
+%% * Hochfrequenztechnik 2, HF2 (SS 2013)
+%% * Hochfrequenzverstärker und Oszillatoren, HFVO (SS 2013)
+%%
+%% Geplante Änderungen:
+%% * Für jede Formel mindestens eine Quellenangabe (Vorlesung und Jahr)
+%% * Mehr Anleitungen für verschiedene Aufgaben (z.B. Smith-Chart)
+%% * Alle bisherigen Vorlesungen durchgehen und weitere Formeln rausschreiben
+%% * Quelltext kommentieren
+%%
+%% LaTeX-Details:
+%% * Geschrieben mit TeXmaker auf Windows und Debian
+%% * MikTeX und TeXLive als Distribution
+%% * Unter Debian wird die Beschriftung der Spannungspfeile fehlerhaft gesetzt
+%%
+%% Viel Erfolg wünscht euch
+%% Patrick
+%%
+%% Kontakt: studium@pkol.de
+%%
+%%%%
+
+\RequirePackage[l2tabu, orthodox]{nag}% Zum Überprüfen auf obsoleten Code
+
+\documentclass[
+	DIV=calc,
+	fontsize=7pt,
+	paper=A4,
+	pagesize,
+	twocolumn
+	]{scrartcl}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage[expansion=false]{microtype}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{
+	booktabs-de,% für die Tabellen
+	tikz,% für die ganzen Zeichnungen
+	xcolor,% für ein bisschen Farbe
+	siunitx% für typographisch korrekte SI-Einheiten
+	}
+\usepackage{esint}% für schönere Integrale und doppeltes Kurvenintegral
+\usepackage{colortbl}% für farbige Tabellenlinien
+\usepackage{tumcolors}% Corporate Design der TUM
+\usepackage{pdfpages}% zum Einbinden von externen PDFs
+\usepackage[european]{circuitikz}% für die Schaltbilder
+\usepackage[
+	ngerman,
+	disable
+	]{todonotes}
+
+
+%% Header-Modifikation
+\usepackage[automark]{scrpage2}
+\usepackage{geometry}
+\geometry{
+includehead,
+inner=0.6cm, outer=0.6cm, top=0.6cm, bottom=0.6cm}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\ihead{Formelsammlung Hochfrequenztechnik \hfill Patrick Kolesa, \texttt{studium@pkol.de} \hfill Aktualisierung: \today \hfill \pagemark}
+
+%% Nötige Zeichenbibliotheken
+\usetikzlibrary{
+	arrows,
+    decorations.pathmorphing,
+	patterns,
+	matrix,
+	decorations.pathreplacing
+	}
+
+\sisetup{
+	locale=DE,
+	list-final-separator = { und },
+	range-phrase = { bis },
+	exponent-product = \cdot
+	}
+	
+%% Mathematik
+\newcommand{\mbeq}{\overset{!}{=}}
+\renewcommand\Re{\operatorname{Re}}
+\renewcommand\Im{\operatorname{Im}}
+\newcommand{\PKOLmatrix}[1]{\underline{#1}}
+\let\divsymb=\div
+\newcommand{\grad}[1]{\text{grad}\, #1} % for gradient
+\renewcommand{\div}[1]{\text{div}\, #1} % for divergence
+\newcommand{\rot}[1]{\text{rot}\, #1} % for curl
+\newcommand{\divgrad}[1]{\Delta\, #1} % for curl
+\renewcommand{\d}[2]{\frac{d #1}{d #2}} % for derivatives	
+
+%% Neue SI-Einheiten
+\DeclareSIUnit{\rad}{rad}
+\DeclareSIUnit{\srad}{srad}
+\DeclareSIUnit{\dBi}{dBi}
+\DeclareSIUnit{\dBd}{dBd}
+\DeclareSIUnit{\dBm}{dBm}
+\DeclareSIUnit{\dBuV}{dB$\mu$V}
+\DeclareSIUnit{\dBmV}{dBmV}
+
+\par\ctikzset {bipoles/thickness=1}
+
+%% Layout
+\let\raggedsection\centering
+\def\schriftgroesse_bild{1}
+\def\const{\text{const}}
+\arrayrulecolor{tumblau}
+\setlength{\fboxrule}{1pt}
+%% Hervorhebung für Kochrezepte
+\newcommand{\highlight}[3]{
+\fcolorbox{tumblau}{#1}{
+\begin{minipage}{\linewidth -0.74cm}
+\textbf{#2}
+#3
+\end{minipage}
+}
+}
+
+%% Zweitor-Vorlage (Vorlage war Gyrator)
+\makeatletter	  
+\ctikzset{quadpoles/zweitor/height/.initial=1.0}
+\ctikzset{quadpoles/zweitor/width/.initial=1.75}
+\pgfcircdeclarequadpole{zweitor}{
+	
+	\def\stretto{.6}
+	
+	\pgfpathmoveto{\pgfpoint{\pgf@circ@res@left}{\pgf@circ@res@up}}
+	\pgfpathlineto{\pgfpoint{\stretto\pgf@circ@res@left}{\pgf@circ@res@up}}
+	\pgfpathlineto{\pgfpoint{\stretto\pgf@circ@res@left}{\pgf@circ@res@down}}
+	\pgfpathlineto{\pgfpoint{\pgf@circ@res@left}{\pgf@circ@res@down}}
+	
+	\pgfpathmoveto{\pgfpoint{\pgf@circ@res@right}{\pgf@circ@res@up}}
+	\pgfpathlineto{\pgfpoint{\stretto\pgf@circ@res@right}{\pgf@circ@res@up}}
+	\pgfpathlineto{\pgfpoint{\stretto\pgf@circ@res@right}{\pgf@circ@res@down}}
+	\pgfpathlineto{\pgfpoint{\pgf@circ@res@right}{\pgf@circ@res@down}}
+	
+	
+
+	\pgfpathmoveto{\pgfpoint{\stretto\pgf@circ@res@left}{\pgf@circ@res@up}}
+	\pgfpathlineto{\pgfpoint{\stretto\pgf@circ@res@left}{0.4cm+\pgf@circ@res@up}}
+	\pgfpathlineto{\pgfpoint{\stretto\pgf@circ@res@right}{0.4cm+\pgf@circ@res@up}}
+	\pgfpathlineto{\pgfpoint{\stretto\pgf@circ@res@right}{\pgf@circ@res@up}}
+	
+	\pgfpathmoveto{\pgfpoint{\stretto\pgf@circ@res@left}{\pgf@circ@res@down}}
+	\pgfpathlineto{\pgfpoint{\stretto\pgf@circ@res@left}{\pgf@circ@res@down -0.4cm}}
+	\pgfpathlineto{\pgfpoint{\stretto\pgf@circ@res@right}{\pgf@circ@res@down -0.4cm}}
+	\pgfpathlineto{\pgfpoint{\stretto\pgf@circ@res@right}{\pgf@circ@res@down}}
+		
+	
+	\pgfusepath{draw}
+}{}
+
+\makeatother
+% Schönere Proportionen
+\ctikzset{bipoles/length=.8cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Here be dragons:
+
+\begin{document}
+
+\section*{Konstanten}
+\input{konstanten}
+
+\section*{Nützliche Zusammenhänge}
+\input{transformationen}
+
+\section*{Allgemein}
+\input{allgemein}
+
+\section*{Lineare Mehrtore}
+\input{mehrtore_linear}
+
+\section*{S-Parameter}
+\input{s-parameter}
+
+\section*{Wellentransmissionsmatrix}
+\input{wellentransmissionsmatrix}
+
+\section*{Kettenmatrix}
+\input{kettenmatrix}
+
+\section*{Even-Odd-Analyse}
+\input{even-odd}
+
+\section*{Signalflussgraphen}
+\input{signalfluss}
+
+\section*{Nichtlineare Mehrtore}
+\input{mehrtore_nichtlinear}
+
+\section*{Bauelemente}
+\input{bauelemente}
+
+\section*{Schaltungen und sonstige Zweitore}
+\input{schaltungen}
+
+\section*{Smith-Diagramm}
+\input{smith}
+
+\section*{Wellenleiter}
+\input{wellenleiter}
+
+\section*{Antennen}
+\input{antennen}
+
+\section*{Elektromagnetische Feldtheorie}
+\input{maxwell}
+\input{gauss}
+\input{theoreme}
+\input{ebenewellen}
+
+\includepdf[pages=7-8, nup=1x2, landscape=true]{extern/hf-sd.pdf}% Smith-Chart-Anleitung
+\includepdf[pages=-, nup=1x2, landscape=true]{extern/hf-vektor.pdf}% Vektoralgebra
+
+%\includepdf[pages=-]{extern/smithchart.pdf}% Black Magic Smith Chart
+
+\end{document}

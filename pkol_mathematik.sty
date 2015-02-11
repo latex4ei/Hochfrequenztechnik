@@ -1,0 +1,21 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pkol_mathematik}[2013/02/16 Mathematische Erweiterungen]
+
+\newcommand{\mbeq}{\overset{!}{=}}
+
+\renewcommand\Re{\operatorname{Re}}
+\renewcommand\Im{\operatorname{Im}}
+
+%% Vektorrechnung
+\newcommand{\PKOLmatrix}[1]{\underline{#1}}
+\let\divsymb=\div
+\newcommand{\grad}[1]{\text{grad}\, #1} % for gradient
+\renewcommand{\div}[1]{\text{div}\, #1} % for divergence
+\newcommand{\rot}[1]{\text{rot}\, #1} % for curl
+\newcommand{\divgrad}[1]{\Delta\, #1} % for curl
+
+%% Ableitungen
+\renewcommand{\d}[2]{\frac{d #1}{d #2}} % for derivatives	
+
+%%
+\endinput

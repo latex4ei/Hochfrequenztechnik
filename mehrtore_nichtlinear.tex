@@ -1,0 +1,64 @@
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Einheit \\ \midrule
+Klemmenleistungsgewinn & $G$ &  \\
+Übertragungsgewinn & $G_T$ &  \\
+Verfügbarer Leistungsgewinn & $G_\text{max}$ &  \\
+Zwischenfrequenz & ZF & \si{\hertz} \\
+Lokaloszillatorfrequenz & $f_\text{LO}$ & \si{\hertz} \\
+Eingangsleistung & $P_E$ & \si{\dBm} \\
+Ausgangsleistung & $P_\text{ZF}$ & \si{\dBm} \\
+Determinante S-Matrix & $\Delta_S$ & \\
+Mittelpunkt Stab. für Last & $C_L$ &  \\
+Radius Stab. für Last & $R_L$ &  \\
+Mittelpunkt Stab. für Generator & $C_G$ &  \\
+Radius Stab. für Generator & $R_G$ &  \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+\begin{description}
+\item[Gewinn von Verstärkerschaltungen] \todo{überprüfen, siart}
+\begin{align*}
+%G &= \frac{\text{Leistung an die Last}}{\text{Leistung vom Generator}} = \\
+%&= \frac{\vert S_{21}(1-|r_L|^2)\vert^2}{1- |S_{11}|^2 + |r_L|^2 (|S_{11}|^2 - |\Delta_S|^2) -2\Re\{r_L(S_{22} - S_{11}^* \Delta_S) \}} \\
+%G_T &= \frac{\text{Leistung an die Last}}{\text{Vom Generator verfügbare Leistung}} = \\
+%&= \frac{1 - |r_G|^2}{|1-r_G S_{11}|^2} \frac{1 - |r_L|^2}{|1-r_L r_2^2|} \\
+G_\text{max} &= \frac{\text{Vom Verstärker verfügbare Leistung}}{\text{Vom Generator verfügbare Leistung}} = \\
+&=  \frac{|S_{21}|^2}{(1-|S_{11}|^2)(1-|S_{22}|^2)} \qquad \textit{bei Leistungsanpassung}
+\end{align*}
+\item[Stabilität von Verstärkerschaltungen]
+\begin{align*}
+C_L &= \frac{(S_{22}-\Delta_S S_{11}^*)^*}{|S_{22}|^2 - |\Delta_S|^2} \\
+R_L &= \left\vert \frac{S_{12}S_{21}}{|S_{22}|^2 - |\Delta_S|^2} \right\vert \\
+C_G &= \frac{(S_{11}-\Delta_S S_{22}^*)^*}{|S_{11}|^2 - |\Delta_S|^2} \\
+R_G &= \left\vert \frac{S_{21}S_{12}}{|S_{11}|^2 - |\Delta_S|^2} \right\vert \\
+K &= \frac{1 - |S_{11}|^2 - |S_{22}|^2 + |\Delta_S|^2}{2|S_{12}||S_{21}|}\\
+\end{align*}
+Bedingungen für absolute Stabilität:
+\begin{align*}
+K > 1 \qquad |S_{11}| &< 1 \qquad |S_{22}| < 1 \\
+|S_{12}S_{21}| &< 1-|S_{22}|^2 \\
+|S_{12}S_{21}| &< 1-|S_{11}|^2 \\
+\end{align*}
+Bedingt stabil, wenn Stabilitätskreise den Rand des SD schneiden.
+
+\item[Mischer] Kann ein Signal auf eine andere Frequenz (ZF) verschieben, erzeugt aber wegen Nichtlinearität Nebenprodukte, die nachträglich gefiltert werden müssen, sowohl vor als auch nach dem Mischer.
+\begin{center}
+\begin{tikzpicture}[scale=0.4, every node/.style={scale=0.7}]
+\input{bilder/mischer1.tex}
+\end{tikzpicture}
+\end{center}
+\begin{center}
+\begin{tikzpicture}[scale=1, every node/.style={scale=1}]
+\input{bilder/mischer2.tex}
+\end{tikzpicture}
+\end{center}
+Der Dynamikbereich eines Mischers wird durch das Heraustreten der Intermodulationsprodukte 3. Art aus dem Rauschen definiert, der Punkt $\text{IP}_3$ ist der Schnittpunkt der linearisierten Leistungskennlinie und die der $\text{IP}_3$-Kennlinie. Der 1-dB-Kompressionspunkt ist der Punkt, an dem die linearisierte Kennlinie um \SI{1}{\dB} von ihrem echten Verlauf abweicht (Sättigung).
+\begin{center}
+\begin{tikzpicture}[scale=1, every node/.style={scale=1}]
+\input{bilder/mischer3.tex}
+\end{tikzpicture}
+\end{center}
+\end{description}

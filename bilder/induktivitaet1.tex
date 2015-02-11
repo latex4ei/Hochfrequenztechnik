@@ -1,0 +1,14 @@
+\node (C1) at (0,1.3) {};
+\node (C2) at (5,1.3) {};
+\node (L1) at (0,0) {};
+\node (L2) at (2.5,0) {};
+\node (R2) at (5,0) {};
+
+\draw (C1) to [capacitor=$C_p$] (C2);
+\draw (L1) to [american inductor=$L$] (L2) to [R=$R_s$] (R2);
+
+\draw (C1) to [short, -*] (L1);
+\draw (C2) to [short, -*] (R2);
+
+\draw (L1) to [short, -o] ++(-0.75,0);
+\draw (R2) to [short, -o] ++(0.75,0);

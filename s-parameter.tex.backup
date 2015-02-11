@@ -1,0 +1,102 @@
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Einheit \\ \midrule
+Reflexionsfaktor & $\Gamma$ &  \\
+Durchgangsdämpfung & $a_B$ & \si{\dB} \\
+\bottomrule
+\end{tabular}
+\end{center}
+%\begin{center}
+%\begin{tikzpicture}[scale=0.3, every node/.style={scale=0.8}]
+%\input{bilder/s-parameter1.tex}
+%\end{tikzpicture}
+%\end{center}
+
+%\begin{center}
+%\begin{tikzpicture}[scale=0.6, every node/.style={scale=1}, circuit ee IEC]
+%\input{bilder/transistor.tex}
+%\end{tikzpicture}
+%\end{center}
+
+\begin{align*}
+\left( \begin{array}{c}
+b_1 \\ 
+b_2
+\end{array}
+\right) &= \left[
+\begin{array}{cc}
+S_{11} & S_{12} \\ 
+S_{21} & S_{22}
+\end{array}
+\right] \cdot \left(
+\begin{array}{c}
+a_1 \\ 
+a_2
+\end{array} \right) \\
+a_k &= \frac{1}{2\sqrt{2Z_0}}\left( U_k + Z_0 I_k\right) \\
+b_k &= \frac{1}{2\sqrt{2Z_0}}\left( U_k - Z_0 I_k\right)
+\end{align*}
+\renewcommand{\arraystretch}{1.6}
+\begin{align*}
+\begin{array}{cc}
+S_{11} = \left.\frac{b_1}{a_1} \right\vert_{a_2 = 0} & S_{12} = \left.\frac{b_1}{a_2} \right\vert_{a_1 = 0} \\ 
+S_{21} = \left.\frac{b_2}{a_1} \right\vert_{a_2 = 0} & S_{22} = \left.\frac{b_2}{a_2} \right\vert_{a_1 = 0}
+\end{array}
+\end{align*}
+\renewcommand{\arraystretch}{1}
+
+\begin{description}
+\item[Umrechnung in \si{\dB}]
+\begin{equation*}
+\begin{array}{cc}
+\Gamma_{\si{\dB}_1} = 20\log\frac{1}{\vert S_{11} \vert}
+ %= 10 \log \frac{1}{\vert S_{11} \vert^2}
+& a_{B2} = 20\log\frac{1}{\vert S_{12} \vert}
+ %= 10 \log \frac{1}{\vert S_{12} \vert^2}
+ \\ 
+a_{B1} = 20\log\frac{1}{\vert S_{21} \vert}
+ %= 10 \log \frac{1}{\vert S_{21} \vert^2}
+ & \Gamma_{\si{\dB}_2} = 20\log\frac{1}{\vert S_{22} \vert}
+ %= 10 \log \frac{1}{\vert S_{22} \vert^2}
+\end{array}
+\end{equation*}
+
+\item[Prozentuale Verlustleistung bei Fehlanpassung]
+\begin{equation*}
+P_v = |\Gamma|^2
+\end{equation*}
+
+\item[Anpassung] Diagonale der S-Matrix ist Null.
+\begin{equation*}
+S_{ii} = 0 \equiv -\infty\,\si{\dB}
+\end{equation*}
+
+\item[Reziprozität] S-Matrix ist symmetrisch.
+\begin{equation*}
+S_{ji} = S_{ij}
+\end{equation*}
+
+\item[Verlustlosigkeit] S-Matrix ist unitär.
+\begin{equation*}
+\underline{S}^T \cdot \underline{S}^* = I
+\end{equation*}
+
+\item[Rückwirkungsfrei] Keine Übertragung von Tor 2 zu Tor 1.
+\begin{equation*}
+S_{12} = 0
+\end{equation*}
+
+\item[Einschränkung] Es gibt kein verlustloses, angepasstes und reziprokes Dreitor.
+
+\item[Häufige S-Matrizen] 
+\begin{align*}
+\text{Verlustlose Leitung: }& \left[ \begin{matrix}
+0 & e^{-j\beta\Delta z} \\ 
+e^{-j\beta\Delta z} & 0
+\end{matrix} \right] \\
+\text{Rückwirkungsfreier Verstärker: }& \left[ \begin{matrix}
+0 & 0 \\ 
+1,7e^{-j160^\circ} & 0,2e^{j42^\circ}
+\end{matrix} \right] \\
+\end{align*}
+\end{description}

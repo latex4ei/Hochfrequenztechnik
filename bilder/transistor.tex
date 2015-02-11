@@ -1,0 +1,40 @@
+\node (contact 1) at (0,1.5) {};
+\node (contact 1s) at (0,2) {};
+\node (contact 1') at (0,0) {};
+\node (contact 1's) at (0,-0.5) {};
+
+\node (contact 2) at (5.5,1.5) {};
+\node (contact 2s) at (5.5,2) {};
+\node (contact 2') at (5.5,0) {};
+\node (contact 2's) at (5.5,-0.5) {};
+
+
+%\draw (contact 1) to [current direction'={very near start}, resistor={info=$Z_i$}] ++(left:2) to [voltage source={midway, direction info, info'=$U_0$}] ++(down:1.5) to (contact 1');
+
+\draw (contact 1) node [left] {Tor 1};
+\draw (contact 2') node [right] {Tor 2};
+
+\draw[thick] (2,-0.5) rectangle ++(1.5,2.5) node[midway,text centered, font=\huge] {$\PKOLmatrix{S}$};
+
+\draw[o-] (contact 1) -- ++(2,0);
+\draw[o-] (contact 1') -- ++(2,0);
+
+\draw[o-] (contact 2) -- ++(-2,0);
+\draw[o-] (contact 2') -- ++(-2,0);
+
+\draw[->] (contact 1s) .. controls ++(2.75,0.5) .. (contact 2s) node [right] {$S_{21}$};
+\draw[<-] (contact 1's) node [left] {$S_{12}$} .. controls ++(2.75,-0.5) .. (contact 2's);
+
+
+\draw[->] (0,1.25) .. controls (2,0.75) .. (0,0.25) node [left] {$S_{11}$};
+\draw[<-] (5.5,1.25) node [right] {$S_{22}$} .. controls (3.5,0.75) .. (5.5,0.25);
+
+%\draw[->] (contact 1)++(0.2,-0.2) --++ (0,-1.1) node[midway, right] {$U_r$};
+%
+%
+%\draw[<-] (contact 1)++(0.2,0.2) --++ (1,0) node[midway, above] {$I_r$};
+%\draw[<-] (contact 1)++(-0.2,0.2) --++ (-1,0) node[midway, above] {$I_h$};
+%
+%
+%\draw[->, decorate,decoration={snake,post length=1.4mm,amplitude=1mm, segment length=3mm}] (contact 1)++(0.7,-0.2) --++ (1,0) node[very near end, below] {$a$};
+%\draw[->, decorate,decoration={snake,post length=1.4mm,amplitude=1mm, segment length=3mm}] (contact 1')++(0.7,0.2) ++ (1,0)--++(-1,0) node[very near end, above] {$b$};

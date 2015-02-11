@@ -1,0 +1,101 @@
+\subsection*{Maxwellsche Gleichungen}
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Einheit \\ \midrule
+Elektrische Feldstärke & $\vec{e}$ & \si{\volt\per\meter}\\
+Elektrische Verschiebungsflussdichte & $\vec{D}_m$ & \si{\ampere\second\per\meter^2}\\
+Magnetische Feldstärke & $\vec{h}$ & \si{\ampere\per\meter}\\
+Magnetische Flussdichte & $\vec{b}$ & \si{\volt\second\per\meter^2}\\
+Elektrische Raumladungsdichte & $\vec{\rho}$ & \si{\ampere\second\per\meter^3}\\
+Elektrische Stromdichte & $\vec{j}$ & \si{\ampere\per\meter^2}\\
+Wellenzahl & $k$ & \si{\per\meter}\\
+Oberflächenimpedanz & $Z_S$ & \si{\ohm} \\
+Oberflächenresistanz & $R_S$ & \si{\ohm}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+\begin{description}
+\item[Durchflutungsgesetz (Ampère)]
+\begin{align*}
+\oint\limits_c \vec{h} \cdot d\vec{s} = \iint\limits_{A(V)} \left( \vec{j} + \frac{\partial \vec{D}_m}{\partial t}\right ) \cdot d\vec{A} \\
+\rot{\vec{h}} = \vec{j} + \d{\vec{D}_m}{t} \\
+\rot{\vec{H}} = \vec{J} + j\omega \vec{D} = \kappa \vec{E} + j\omega \epsilon_0 \epsilon_r \vec{E} \\
+\end{align*}
+
+\item[Induktionssatz (Faraday)]
+\begin{align*}
+\oint\limits_c \vec{e} \cdot d\vec{s} = - \iint\limits_{A(V)} \frac{\partial \vec{b}}{\partial t} \cdot d\vec{A} \\
+\rot{\vec{e}} = - \d{\vec{b}}{t} \\
+\rot{\vec{E}} = - j\omega\vec{B} = - j \omega \mu_0 \mu_r\vec{H}\\
+\end{align*}
+
+\item[Gaußsches Gesetz]
+\begin{align*}
+\oint\limits_S \vec{D}_m \cdot d\vec{A} = \iiint\limits_V \rho \cdot dV \\
+\div{\vec{D}_m} = \rho \\
+\div{\vec{D}} = \div{\epsilon_0 \epsilon_r \vec{E}} = \rho \\
+\end{align*}
+
+\item[Gaußsches Gesetz für die magnetische Flussdichte]
+\begin{align*}
+\oint\limits_S \vec{b} \cdot d\vec{A} = \int\limits_V \rho_m \cdot dV \\
+\div{\vec{b}} = 0 \\
+\div{\vec{B}} = 0\\
+\end{align*}
+
+\item[Materialgesetze]
+\begin{align*}
+\vec{D}_m = \epsilon\vec{e} = \epsilon_0 \epsilon_r \vec{e} \\
+\vec{b} = \mu \vec{h} = \mu_0 \mu_r \vec{h} \\
+\vec{j} = \kappa \vec{e} \\
+\vec{D} = \epsilon\vec{E} = \epsilon_0 \epsilon_r \vec{E} \\
+\vec{B} = \mu \vec{H} = \mu_0 \mu_r \vec{H} \\
+\vec{J} = \kappa \vec{E}
+\end{align*}
+
+\item[Randbedingungen für Tangentialkomponenten]
+\begin{align*}
+\text{Normalfall: }&\vec{n}\times\left(\vec{h}_1 - \vec{h}_2 \right) = 0 \\
+\text{Oberflächenströme: }&\vec{n}\times\left(\vec{h}_1 - \vec{h}_2 \right) = \vec{j}_F \\
+\text{Normalfall: }&\vec{n}\times\left(\vec{e}_1 - \vec{e}_2 \right) = 0 \\
+\end{align*}
+
+\item[Randbedingungen für Normalkomponenten]
+\begin{align*}
+\text{Normalfall: }&\vec{n}\cdot\left(\vec{D}_{m1} - \vec{D}_{m2} \right) = 0 \\
+\text{Oberflächenladungen: }&\vec{n}\cdot\left(\vec{D}_{m1} - \vec{D}_{m2} \right) = \rho_F \\
+\text{Normalfall: }&\vec{n}\cdot\left(\vec{b}_1 - \vec{b}_2 \right) = 0 \\
+\end{align*}
+
+\item[Kontinuitätsgleichung des Stroms]
+\begin{align*}
+\oint\limits_{A(V)} \vec{j} \cdot d\vec{A} = - \int\limits_V \frac{\partial \rho}{\partial t} \cdot dV \\
+\div{\vec{j}} = - \frac{\partial \rho}{\partial t} \\
+\div{\vec{J}} = - j \omega \rho \\
+\end{align*}
+
+\item[Elektromagnetische Bilanzgleichung]
+\begin{align*}
+\oiint\limits_V \vec{S} \cdot d\vec{A} &= -P_v + j\omega 2(\bar{w}_e + \bar{w}_m) \\
+\div{\vec{J_\text{em}}} &= \Pi_\text{em} - \frac{\partial w_\text{em}}{\partial t} \\
+\div{\frac{1}{2}\vec{E}\times\vec{H^*}} &= -\vec{j}\cdot\vec{E} - \frac{\partial(w_e + w_m)}{\partial t}
+\end{align*}
+
+\item[Wellengleichung]
+\begin{equation*}
+\rot\rot\vec{E} - k^2\vec{E} = -j \omega \mu_0 \mu_r \vec{J}
+\end{equation*}
+
+\item[Helmholtz-Gleichung]
+\begin{equation*}
+\divgrad{\vec{E}} + k^2 \vec{E} = 0
+\end{equation*}
+
+\item[Skineffekt] Bei Eindringtiefe der Welle von $1\delta$: Feldstärke $E_0$ fällt auf $0,37 E_0$ oder $\frac{1}{e}$ ab.
+\begin{align*}
+\delta &= \frac{1}{k} = \sqrt{\frac{2}{\omega \mu \kappa}} \\
+Z_S &= R_S(1+j) = (1+j) \sqrt{\frac{\omega \mu_0 \mu_r}{2 \kappa}}
+\end{align*}
+\end{description}

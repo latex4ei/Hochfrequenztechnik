@@ -1,0 +1,60 @@
+%\begin{center}
+%\begin{tabular}{ccc} \toprule
+%Bezeichnung & Symbol & Einheit \\ \midrule
+%Wellenwiderstand & $Z_F$ & \si{\ohm} \\
+%Brewsterwinkel (nur parallel) & $\theta_B$ &  \\
+%Wellenzahl & k & \\
+%Eindringtiefe & $\delta$ & \si{\meter} \\
+%Poynting-Vektor & $\vec{S}$ & $\si{\watt\per\meter^2}$ \\
+%\bottomrule
+%\end{tabular}
+%\end{center}
+
+\begin{description}
+\item[Schaltbild $\longmapsto$ Signalfluss] \strut
+\begin{center}
+\begin{circuitikz}[scale=1, every node/.style={scale=1}]
+\input{bilder/signalfluss1.tex}
+\end{circuitikz}
+\end{center}
+
+%\item[Vereinfachungsregeln] \strut
+%\begin{center}
+%\begin{circuitikz}[scale=1, every node/.style={scale=1}]
+%\input{bilder/signalfluss2.tex}
+%\end{circuitikz}
+%\end{center}
+
+\item[Mason-Regel] \strut
+\begin{align*}
+T = &\frac{ P_1 \left( 1 - \sum L(1)^{[1]} + \sum L(2)^{[1]} - \dots \right)}{ 1 - \sum L(1) + \sum L(2) - \sum L(3) + \dots } \\
++ &\frac{P_2 \left( 1 - \sum L(1)^{[2]} + \sum L(2)^{[2]} - \dots \right)}{1 - \sum L(1) + \sum L(2) - \sum L(3) + \dots}  \\
++ &\dots
+\end{align*}
+\begin{description}
+\item[$T$] Verhältnis von abhängiger zu unabhängiger Variable
+\item[$P_n$] Pfadwerte aller $n$ möglichen Pfade vom unabhängigen zum abhängigen Knoten
+\item[$\sum L(i)$] Summe aller Schleifen $i$-ter Ordnung
+\item[$\sum L(i)^{[m]}$] Summe aller Schleifen $i$-ter Ordnung, die Pfad $m$ nicht berühren
+\end{description}
+
+\item[Beispiel: Abgeschlossenes Zweitor] \strut
+
+\begin{minipage}[]{0.63\linewidth}
+\begin{circuitikz}[scale=1, every node/.style={scale=1}]
+\input{bilder/signalfluss3.tex}
+\end{circuitikz}
+\end{minipage}
+\begin{minipage}[]{0.36\linewidth}
+\begin{align*}
+P_1 &= S_{21}S_{12}\Gamma_\text{Last}\\
+P_2 &= S_{11}\\
+L(1) &= S_{22} \Gamma_\text{Last}
+\end{align*}
+\end{minipage}
+
+\begin{align*}
+T &= \frac{b_1}{a_2} = \frac{S_{21}S_{12}\Gamma_\text{Last} (1-0) + S_{11} (1-S_{22}\Gamma_\text{Last}) }{1-S_{22}\Gamma_\text{Last} } \\
+&= S_{11} + \frac{S_{12} S_{21} \Gamma_\text{Last}}{1 - S_{22} \Gamma_\text{Last}} = \Gamma_E 
+\end{align*}
+\end{description}

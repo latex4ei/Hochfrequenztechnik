@@ -1,0 +1,77 @@
+Die Kettenmatrix verknüpft Ströme und Spannungen. Werden mehrere Vierpole betrachtet, so ist die Gesamtkettenmatrix das Produkt der einzelnen Kettenmatrizen. Spannung und Strom werden auf einen Widerstand $Z_0$ bezogen.
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Einheit \\ \midrule
+Bezugswiderstand & $Z_0$ & \si{\ohm} \\
+Wellenwiderstand & $Z_L$ & \si{\ohm} \\
+Determinante Kettenmatrix & $\Delta_A$ & \\
+Geometrische Länge & $l$ & \si{\meter} \\
+Elektrische Länge & $\beta l$ & \si{\rad} \\
+Windungszahlverhältnis & $n$ &  \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{align*}
+\left( \begin{array}{c}
+u_1 \\ 
+i_1
+\end{array} \right) &= \left[
+\begin{array}{cc}
+A & B \\ 
+C & D
+\end{array} \right] \cdot
+\left( \begin{array}{c}
+u_2 \\ 
+-i_2
+\end{array} \right) \\
+u_n &= \frac{U_n}{\sqrt{Z_0}} \qquad i_n = I_n \sqrt{Z_0} \\
+\end{align*}
+
+\begin{description}
+\item[S-Parameter $\longmapsto$ Kettenmatrix]
+\renewcommand{\arraystretch}{1.6}
+\begin{align*}
+\begin{array}{cc}
+A = \frac{- \Delta_S + S_{11} - S_{22} + 1}{2 S_{21}} & B = \frac{\Delta_S + S_{11} + S_{22} + 1}{2 S_{21}} \\
+C = \frac{\Delta_S - S_{11} - S_{22} + 1}{2 S_{21}} & D = \frac{- \Delta_S - S_{11} + S_{22} + 1}{2 S_{21}} \\
+\end{array}
+\end{align*}
+
+\item[Kettenmatrix $\longmapsto$ S-Parameter]
+\begin{align*}
+\begin{array}{cc}
+S_{11} = \frac{A+B-C+D}{A+B+C+D} & S_{12} = \frac{2\Delta_A}{A+B+C+D} \\
+S_{21} = \frac{2}{A+B+C+D} & S_{22} = \frac{-A+B-C+D}{A+B+C+D} \\
+\Delta_A = AD-BC &
+\end{array}
+\end{align*}
+\renewcommand{\arraystretch}{1}
+
+\item[Häufige Kettenmatrizen] 
+\begin{align*}
+\text{Längswiderstand $R$: }& \left[ \begin{matrix}
+1 & \frac{R}{Z_0} \\ 
+0 & 1
+\end{matrix} \right] \\
+\text{Querleitwert $G$: }& \left[ \begin{matrix}
+1 & 0 \\ 
+G Z_0 & 1
+\end{matrix} \right] \\
+\text{Verlustlose Leitung: }& \left[ \begin{matrix}
+\cos \beta l & j\frac{Z_L}{Z_0} \sin \beta l \\ 
+j\frac{Z_0}{Z_L} \sin \beta l & \cos \beta l
+\end{matrix} \right] \\
+\text{Verlustbehaftete Leitung: }& \left[ \begin{matrix}
+\cosh \gamma l & \frac{Z_L}{Z_0} \sinh \gamma l \\ 
+\frac{Z_L}{Z_0} \sinh \gamma l & \cosh \gamma l
+\end{matrix} \right] \\
+\text{Verlustloser Übertrager: }& \left[ \begin{matrix}
+\frac{1}{n} & 0 \\ 
+0 & n
+\end{matrix} \right] \\
+\text{Vierpol mit Abschluss $Z_0$: }& Z_E = \frac{A+B}{C+D} Z_0 \\
+\text{Vierpol mit Kurzschluss-Abschluss: }& Z_E = \frac{B}{D} Z_0 \\
+\text{Vierpol mit Leerlauf-Abschluss: }& Z_E = \frac{A}{C} Z_0 \\
+\text{Vierpol mit Abschluss $Z_\text{Last}$: }& Z_E = \frac{A Z_\text{Last} + B Z_0}{C Z_\text{Last} + D Z_0} \\
+\end{align*}
+\end{description}

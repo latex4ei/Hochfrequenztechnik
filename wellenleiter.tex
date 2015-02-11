@@ -1,0 +1,319 @@
+\begin{description}
+\item[Allgemeine Formeln] \strut
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Einheit \\ \midrule
+Leitungswellenwiderstand & $Z_L$ &  \si{\ohm}\\
+Dämpfungskonstante & $\alpha$ & \si{\neper\per\meter} \\
+Phasenkonstante & $\beta$ & \si{\rad\per\meter} \\
+Phasengeschwindigkeit & $v_\text{ph}$ & \si{\meter\per\second}\\
+Reflexionsfaktor & $\Gamma$ &  \\
+Voltage Standing Wave Ratio & VSWR &  \\
+Induktivitätsbelag & $L'$ & \si{\henry\per\meter} \\
+Kapazitätsbelag & $C'$ & \si{\farad\per\meter} \\
+Widerstandsbelag & $R'$ & \si{\ohm\per\meter} \\
+Leitwertsbelag & $G'$ & \si{\siemens\per\meter} \\
+Leitfähigkeit & $\kappa$ &  \si{\siemens\per\meter}\\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{align*}
+	U(z) &= U_h e^{-\gamma z} + U_r e^{+\gamma z} \\
+	I(z) &= U_h e^{-\gamma z} + I_r e^{+\gamma z} \\
+	Z_L &= \frac{U_h}{I_h} = \frac{U_r}{I_r} = \sqrt{\frac{R' + j \omega L'}{G' + j \omega C'}} \approx \sqrt{\frac{L'}{C'}} = \sqrt{\frac{\mu_0 \mu_r}{\epsilon_0 \epsilon_r}} \\
+	\gamma &= \alpha + j \beta = \sqrt{(R' + j \omega L')(G' + j \omega C')} \\
+	\alpha &= \frac{R'}{2Z_L} \\
+	\beta &= \frac{2\pi}{\lambda} = \omega \sqrt{L' C'} = \omega \sqrt{\epsilon_0 \epsilon_r \mu_0 \mu_r} \\
+	v_{\text{ph}} &= \frac{\omega}{\beta} = \frac{1}{\sqrt{L' C'}} = \frac{c_o}{\sqrt{\mu_r \epsilon_r}} \text{ mit } c_0 = \frac{1}{\sqrt{\epsilon_0 \mu_0}} \\
+	\Gamma &= \frac{b_i}{a_i} = \frac{U_r}{U_h} = \frac{I_r}{I_h} = \frac{Z_0 - Z_L}{Z_0 + Z_L} \\
+	\text{VSWR} &= \frac{1+|\Gamma|}{1-|\Gamma|} = \frac{U_\text{max}}{U_\text{min}} \\
+	Z_{\lambda / 4} &= \sqrt{Z_E Z_\text{Last}}\\
+\end{align*}
+
+\item[Koaxialleitung] Grundmode ist TEM, es herrscht Dispersionsfreiheit
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Einheit \\ \midrule
+Außenleiter Innendurchmesser & $D$ &  \si{\meter}\\
+Innenleiter Durchmesser & $d$ &  \si{\meter}\\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{center}
+\begin{tikzpicture}[scale=0.2, every node/.style={scale=0.8}]
+\input{bilder/koax1.tex}
+\end{tikzpicture}
+\end{center}
+\begin{align*}
+Z_L &\approx \sqrt{\frac{L'}{C'}} = Z_{F0} \frac{\ln(\frac{D}{d})}{2\pi\sqrt{\epsilon_r}} \\
+L' &= \frac{\mu_0 \mu_r}{2\pi} \ln\left(\frac{D}{d}\right) \\
+C' &= \frac{2\pi \epsilon_0 \epsilon_r}{\ln \left(\frac{D}{d}\right)} \\ 
+R' &= \sqrt{\frac{\omega \mu}{2 \kappa}} \cdot \frac{1}{\pi}\left( \frac{1}{D} + \frac{1}{d} \right) \\
+G' &= - \frac{\kappa}{\epsilon_0 \epsilon_r} C' \\
+\end{align*}
+\begin{align*}
+\alpha = \alpha_c + \alpha_d =& \sqrt{\frac{f \mu}{\sigma \pi}} \left( \frac{2}{d} + \frac{2}{D} \right) \frac{1}{4Z_L} + \\
+&+ \pi f \sqrt{\epsilon_r} \frac{tan \delta}{c_0}
+\end{align*}
+
+\item[Zweidrahtleitung/Doppelleitung] Grundmode ist TEM
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Einheit \\ \midrule
+Leiterabstand & $d$ &  \si{\meter}\\
+Leiterradius & $a$ &  \si{\meter}\\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{center}
+\begin{tikzpicture}[scale=0.2, every node/.style={scale=0.8}]
+\input{bilder/zweidraht1.tex}
+\end{tikzpicture}
+\end{center}
+\begin{align*}
+Z_L &= \frac{Z_{F0}}{\pi\sqrt{\epsilon_r}} \ln\left( \frac{d}{a} \right) \\
+L' &= \frac{\mu_0 \mu_r}{\pi} \ln\left(\frac{d}{a}\right) \\
+C' &= \frac{\pi \epsilon_0 \epsilon_r}{\ln\left(\frac{d}{a}\right)} \\
+R' &= \sqrt{\frac{\omega \mu_0 \mu_r}{2 \kappa}} \cdot \frac{1}{\pi a} \\
+G' &= \frac{\kappa}{\epsilon_0 \epsilon_r} C' \\
+\end{align*}
+
+\item[Streifenleitung/Bandleitung] Grundmode ist TEM
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Einheit \\ \midrule
+Leiterabstand & $a$ &  \si{\meter}\\
+Leiterbreite & $b$ &  \si{\meter}\\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{center}
+\begin{tikzpicture}[scale=0.2, every node/.style={scale=0.8}]
+\input{bilder/streifen1.tex}
+\end{tikzpicture}
+\end{center}
+\begin{align*}
+Z_L &= \frac{Z_{F0}}{\pi\sqrt{\epsilon_r}} \frac{b}{a}\\
+L' &= \mu_0 \mu_r \frac{a}{b}\\
+C' &= \epsilon_0 \epsilon_r \frac{b}{a}\\
+R' &= \sqrt{\frac{\omega \mu_0 \mu_r}{2 \kappa}} \cdot \frac{2}{b}\\
+G' &= - \frac{\kappa}{\epsilon_0 \epsilon_r} C' \\
+\end{align*}
+
+\item[Mikrostreifenleitung] Grundmode ist Quasi-TEM
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Einheit \\ \midrule
+Substrathöhe & $h$ & \si{\meter} \\
+Leiterbreite & $w$ & \si{\meter} \\
+Effektive Leiterbreite & $w_\text{eff}$ &  \si{\meter}\\
+Effektive Dielektrizitätszahl & $\epsilon_{r,\text{eff}}$ \\
+Cutoff-Frequenz für 1. Mode & $f_{c,\text{HE1}}$ & \si{\hertz} \\
+Güte der Leitung & $Q$ & \\
+Substratwellenlänge & $\lambda_\epsilon$ & \si{\meter} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Eigenschaften:
+\begin{itemize}
+\item[+] Verlustarm
+\item[+] Serienelemente leicht integrierbar
+\item[+] Einfache Fertigung
+\item[-] Parallelelemente schwierig
+\item[-] Leiterbreite nicht skalierbar
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.2, every node/.style={scale=0.8}]
+\input{bilder/mikrostreifen2.tex}
+\end{tikzpicture}
+\end{center}
+Kapazitäten und Induktivitäten können durch einfache Leiterbreitenvariation erzeugt werden.
+\begin{center}
+\begin{tikzpicture}[scale=0.2, every node/.style={scale=1}]
+\input{bilder/mikrostreifen1.tex}
+\end{tikzpicture}
+\end{center}
+Hinweis: Näherungsformeln für Effektivwerte weichen je nach Vorlesung ab.
+\begin{align*}
+Z_L &= \frac{Z_{F0}}{\sqrt{\epsilon_{r,\text{eff}}}} \cdot \frac{h}{w_\text{eff}} \\
+w_\text{eff} &= \frac{Z_{F0}}{Z_L} \cdot \frac{h}{\sqrt{\epsilon_{r,\text{eff}}}} \\
+w_\text{eff} &= w + \frac{2h}{\pi} \cdot \left\{ 1 + \ln\left(2\pi ( \frac{w}{h} + 0,92) \right) \right\} \\
+\sqrt{\epsilon_{r,\text{eff}}} &= \frac{\epsilon_r + 1}{2} + \frac{\epsilon_r - 1}{2} \cdot \frac{1}{\sqrt{1 + 10 \frac{h}{w}}} \\
+f_{c,\text{HE1}} &= \frac{c_0}{2w_\text{eff}\sqrt{\epsilon_{r,\text{eff}}}} \\
+Q &= \frac{\pi}{\lambda_\epsilon \alpha} \\
+v_\text{ph} &= \frac{c_0}{\sqrt{\epsilon_{r,\text{eff}}}} \\
+\beta &= \frac{2\pi}{\lambda_\epsilon} = \frac{2\pi}{\lambda_o} \sqrt{\epsilon_{r,\text{eff}}} = \frac{2\pi f}{c_0} \sqrt{\epsilon_{r,\text{eff}}} \\
+\end{align*}
+
+\item[Konforme Abbildung für Wellenwiderstandsberechnung] Für die folgenden Wellenleiter werden die Parameter über eine konforme Abbildung berechnet. %Viel Spaß.
+\begin{align*}
+\frac{K(k)}{K'(k)} &= \left\{ \begin{matrix}
+\left[ \frac{1}{\pi} \ln \left( 2\frac{1+\sqrt{k'}}{1-\sqrt{k'}} \right) \right]^{-1} & 0 \leq k \leq \frac{1}{\sqrt{2}} \\ 
+\frac{1}{\pi} \ln \left( 2\frac{1+\sqrt{k}}{1-\sqrt{k}} \right) & \frac{1}{\sqrt{2}} < k \leq 1
+\end{matrix}  \right. \\
+k' &= \sqrt{1-k^2}
+\end{align*}
+
+\item[Streifenleitung] Grundmode ist TEM
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Einheit \\ \midrule
+Substrathöhe & $h$ & \si{\meter} \\
+Innenleiterbreite & $w$ & \si{\meter} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.2, every node/.style={scale=0.8}]
+\input{bilder/streifenleitung.tex}
+\end{tikzpicture}
+\end{center}
+
+\begin{align*}
+Z_L &= \frac{Z_{F0}}{4 \sqrt{\epsilon_r}} \frac{K'(k)}{K(k)} \\
+k &= \tanh \left( \frac{\pi}{w} \frac{w}{h} \right)
+\end{align*}
+
+\item[Koplanarleitung] \strut
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Einheit \\ \midrule
+Substrathöhe & $h$ & \si{\meter} \\
+Mittelleiterbreite & $w$ & \si{\meter} \\
+Abstand & $s$ & \si{\meter} \\
+Effektive Dielektrizitätszahl & $\epsilon_{r,\text{eff}}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Eigenschaften:
+\begin{itemize}
+\item[+] Einseitige Metallisierung
+\item[+] Serienelemente leicht integrierbar
+\item[+] Parallelelemente leicht integrierbar
+\item[-] Mittlere Verluste
+\item[-] Even-odd-Moden (Unterdrückung von odd durch Drahtbrücken)
+\end{itemize}
+\begin{center}
+\begin{tikzpicture}[scale=0.2, every node/.style={scale=0.8}]
+\input{bilder/koplanarleitung.tex}
+\end{tikzpicture}
+\end{center}
+
+\begin{align*}
+Z_L &= \frac{Z_{F0}}{4 \sqrt{\epsilon_r}} \frac{K'(k)}{K(k)} \\
+\epsilon_{r,\text{eff}} &= 1+\frac{\epsilon_r -1 }{2} \frac{K'(k)}{K(k)} \frac{K(k_1)}{K'(k_1)} \\
+k &= \frac{w}{w+2s} \\
+k_1 &= \frac{\sinh \frac{\pi w}{4h}}{\sinh \frac{\pi(w+2s)}{4h}}
+\intertext{für $h\rightarrow \infty$}
+k_1 &= k
+\end{align*}
+
+\item[Koplanare Streifenleitung] \strut
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Einheit \\ \midrule
+Leiterbreite & $w$ & \si{\meter} \\
+Abstand zwischen den Leitungen & $s$ & \si{\meter} \\
+\bottomrule
+\end{tabular}
+\end{center}
+Verwendung:
+\begin{itemize}
+\item Speiseleitung für Antennen
+\item Leitungstransformationen
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.2, every node/.style={scale=0.8}]
+\input{bilder/koplanarstreifen.tex}
+\end{tikzpicture}
+\end{center}
+
+\begin{align*}
+Z_L &= \frac{Z_{F0}}{\sqrt{\epsilon_{r,\text{eff}}}} \frac{K(k)}{K'(k)} \\
+k &= \frac{s}{s+2w} \\
+\end{align*}
+
+\item[Allgemeiner Hohlleiter] Grundmode ist TE oder TM
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Einheit \\ \midrule
+Phasengeschwindigkeit & $v_\text{ph}$ & \si{\meter\per\second} \\
+Gruppengeschwindigkeit & $v_g$ & \si{\meter\per\second} \\
+Wellenzahl & $k$ & \si{\per\meter} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{align*}
+v_\text{ph} &= \frac{\omega}{\beta}
+\intertext{ist häufig größer als $c_0$, während die Information/Energie mit}
+v_g &= \left( \frac{d \beta}{d \omega} \right)^{-1} \leq c_0
+\end{align*}
+übertragen wird.
+
+\item[Rechteckhohlleiter] \strut
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Einheit \\ \midrule
+Breite & $a$ & \si{\meter} \\
+Höhe & $b$ & \si{\meter} \\
+Eigenwert & $q_v$ & \si{\per\meter} \\
+Ausbreitungsmaß & $\gamma_v$ & \si{\per\meter} \\
+Cutoff-Frequenz & $f_{c,v}$ & \si{\hertz} \\
+Cutoff-Wellenlänge & $\lambda_{c,v}$ & \si{\meter} \\
+Transportierte Leistung & $P$ & \si{\watt} \\
+\bottomrule
+\end{tabular}
+\end{center}
+%\begin{center}
+%\begin{tikzpicture}[scale=0.4]
+%	\input{bilder/hohlleiter1.tex}
+%\end{tikzpicture}
+%\end{center}
+
+\begin{align*}
+q_v &= \sqrt{\left( \frac{\pi m}{a} \right)^2 + \left( \frac{\pi n}{b} \right)^2 } \\
+k^2 &= \omega^2 \epsilon_0 \epsilon_r \mu_0 \mu_r \\
+\gamma_v &= \sqrt{q_v - k^2} \\
+f_{c,v} &= \frac{c_0}{2\pi\sqrt{\epsilon_r \mu_r}} q_v \\
+\lambda_{c,v} &= \frac{2\pi\sqrt{\epsilon_r \mu_r}}{q_v} =\frac{2\sqrt{\epsilon_r \mu_r}}{\sqrt{\left( \frac{m}{a} \right)^2 + \left( \frac{n}{b} \right)^2}} \\
+P &= \frac{ab}{4} \frac{E_\text{max}^2}{Z_F} \\
+Z_{F,E} &= \frac{\gamma_v}{j\omega \epsilon_0 \epsilon_r} = Z_{F0}\sqrt{1 - \left(\frac{f_c}{f}\right)^2 } = Z_{F0}\sqrt{1 - \left(\frac{\lambda_0}{\lambda_{c,v}}\right)^2 }\\
+Z_{F,H} &= \frac{j\omega \mu_0 \mu_r}{\gamma_v} = \frac{Z_{F0}}{\sqrt{1 - \left(\frac{f_c}{f}\right)^2 }} = \frac{Z_{F0}}{\sqrt{1 - \left(\frac{\lambda_0}{\lambda_{c,v}}\right)^2 }} \\
+\lambda_{H,mn} &= \lambda_{E,mn} = \frac{1}{\sqrt{\epsilon_r \mu_r}} \frac{\lambda_0}{\sqrt{1 - \left(\frac{\lambda_0}{\lambda_{c,v}}\right)^2 }} \\
+v_\text{ph} &= \frac{c_0}{\sqrt{1 - \left(\frac{f_c}{f}\right)^2 }} = \frac{c_0}{\sqrt{1 - \left(\frac{\lambda_0}{\lambda_{c,v}}\right)^2 }} \\
+v_g &= \frac{c_0}{\sqrt{\epsilon_r \mu_r}} \sqrt{1 - \left(\frac{f_c}{f}\right)^2 } = \frac{c_0}{\sqrt{\epsilon_r \mu_r}} \sqrt{1 - \left(\frac{\lambda_0}{\lambda_{c,v}}\right)^2}
+\end{align*}
+
+\item[Rundhohlleiter] \strut
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Einheit \\ \midrule
+Durchmesser & $D$ & \si{\meter} \\
+Phasenmaß & $\beta_{mn}$ & \si{\per\meter} \\
+Cutoff-Wellenlänge & $\lambda_{c,v}$ & \si{\meter} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{align*}
+\lambda_{c,mn} &= \frac{\pi D}{p_{mn}} \\
+\beta_{mn} &= \sqrt{k_0^2 - \left( \frac{p_{mn}}{D/2} \right)^2}
+\end{align*}
+\end{description}
+\begin{center}
+\begin{tabular}{cccccccc}
+\toprule
+$m$ & \multicolumn{3}{c}{$H_{mn}$} & & \multicolumn{3}{c}{$E_{mn}$} \\
+\cmidrule(l){2-4}
+\cmidrule(r){6-8}
+ & $p_{m1}$ & $p_{m2}$ & $p_{m3}$ & & $p_{m1}$ & $p_{m2}$ & $p_{m3}$ \\
+\midrule
+0 & 3,832 & 7,016 & 10,174 & & 2,405 & 5,520 & 8,654 \\
+1 & 1,841 & 5,331 & 8,536 & & 3,832 & 7,016 & 10,174 \\
+2 & 3,054 & 6,706 & 9,970 & & 5,135 & 8,417 & 11,620 \\
+\bottomrule
+\end{tabular}
+\end{center}

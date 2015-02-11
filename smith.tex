@@ -1,0 +1,94 @@
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Einheit \\ \midrule
+Leitungswellenwiderstand & $Z_L$ &  \si{\ohm}\\
+Bezugswellenwiderstand & $Z_0$ &  \si{\ohm}\\
+Anpasspunkt (normiert) & $z_0$ &  \\
+Reflexionsfaktor & $\Gamma$ &  \\
+Voltage Standing Wave Ratio & VSWR &  \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Allgemein}
+\begin{description}
+\item[Normierung] Alle Impedanzen $Z$ werden im SD normiert als $z$ dargestellt.
+\begin{equation*}
+z = \frac{Z}{Z_0}
+\end{equation*}
+\end{description}
+
+\subsection*{Reflexionsfaktor \texorpdfstring{$\Gamma$}{r}}
+\begin{description}
+\item[Kurzschluss] Für geringere Leitungslänge ist das Verhalten induktiv.
+\begin{equation*}
+\Gamma = -1
+\end{equation*}
+
+\item[Leerlauf] Für geringere Leitungslänge ist das Verhalten kapazitiv.
+\begin{equation*}
+\Gamma = 1
+\end{equation*}
+
+\item[Reflexionsfreier Abschluss] Anpasspunkt bei $z_0 = 1+j0$
+\begin{equation*}
+\Gamma = 0
+\end{equation*}
+
+\item[Impedanz einer abgeschlossenen Leitung]
+\begin{equation*}
+\Gamma = \frac{Z_L - Z_0}{Z_L + Z_0}
+\end{equation*}
+\end{description}
+
+\subsection*{Anpassprobleme}
+\highlight{schritte}{Schritte zur Anpassung von $Z_\text{Last}$ (nur konzentrierte Elemente)}{
+Es wird von der Impedanzebene ausgegangen.
+\begin{enumerate}
+\item Anpasskreis für Admittanzebene zeichnen, Mittelpunkt bei $z=0,35$.
+\item Es kann angepasst werden, falls $Z_\text{Last}$ auf einen Anpasskreis gebracht werden kann. Dazu den Linien mit $\Re=\const$ folgen und entweder Kapazität oder Induktivität auswählen.
+\begin{itemize}
+\item Man sollte den Anpasskreis der Admittanzebene erreichen.
+\item Falls nicht, so wird $Z_\text{Last}$ am Anpasspunkt gespiegelt und es wird nochmal in der Admittanzebene versucht. Anschließend wieder zurückspiegeln.
+\end{itemize}
+\item Am Anpasskreis wird jetzt eine Parallel- bzw. Reihenschaltung eines weiteren Bauelements vorgenommen, so dass man im Anpasspunkt landet.
+\item %Das Ablesen der Bauteilwerte erfolgt nur in der Impedanzebene!
+Das Ablesen der Bauteilwerte erfolgt für Reihenschaltung in der Impedanzebene, ananlog für Parallelschaltung in der Admittanzebene. Dazu die Differenz des Imaginärteils zwischen den jeweiligen Punkten bilden und in die unteren Gleichungen einsetzen.
+\end{enumerate}
+}
+\highlight{schritte}{Parallele Stichleitung zur Anpassung}{
+\begin{enumerate}
+\item $Z_\text{Last}$ durch Spiegelung am Anpasspunkt zu $Y_\text{Last}$ transformieren
+\item Imaginärteil ablesen, muss durch Stichleitung erzeugt werden
+\item Vom Anpasspunkt gerade Linie zum Imaginärteil am Rand zeichnen
+\item $\frac{l}{\lambda}$ ablesen
+\end{enumerate}
+}
+\begin{description}
+\item[Leistungsanpassung] Wenn $Z_i$ Generatorimpedanz, dann muss man durch geeignete Anpassung zu $Z^*_i$ gelangen.
+\item[$\lambda / 4$-Transformation] Jeder Widerstand (reelle Impedanz) $Z_\text{Last}$ kann mit einer $\lambda / 4$-langen Leitung mit Wellenwiderstand $Z_{\lambda /4}$ über
+\begin{equation*}
+Z_{\lambda /4} = \sqrt{Z_0 Z_\text{Last}}
+\end{equation*}
+in den Anpasspunkt $Z_L$ transformiert werden.
+\end{description}
+
+\subsection*{Elementwerte bestimmen}
+\begin{description}
+\item[Induktivität] Imaginärteil-Linien zum Rand folgen
+\begin{align*}
+L_S &= \frac{Z_0 \Delta x}{2\pi f} \\
+L_P &= \frac{Z_0}{2\pi f \Delta b}
+\end{align*}
+
+\item[Kapazität] Imaginärteil-Linien zum Rand folgen
+\begin{align*}
+C_S &= \frac{1}{2\pi f Z_0 \Delta x} \\
+C_P &= \frac{\Delta b}{2\pi f Z_0}
+\end{align*}
+
+\item[Leitungslänge] Gerade von Mittelpunkt zum Rand
+\begin{align*}
+l &= \frac{c_0}{f} \frac{l}{\lambda}
+\end{align*}
+\end{description}

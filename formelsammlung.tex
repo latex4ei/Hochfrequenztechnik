@@ -1,0 +1,77 @@
+\documentclass[DIV=calc, fontsize=7pt, paper=a4, twocolumn]{scrartcl}
+
+\usepackage[ngerman]{babel}		
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}	
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{babel}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{booktabs-de}	
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\newcommand{\mbeq}{\overset{!}{=}}
+
+\sisetup{
+%list-final-separator = { \translate{und} },
+%range-phrase = { \translate{bis} },
+per-mode = fraction,
+locale=DE,
+exponent-product = \cdot
+}
+
+\DeclareSIUnit{\rad}{rad}
+%\DeclareSIUnit{\dBm}{dBm}
+
+\title{Formelsammlung Hochfrequenztechnik}
+\author{Patrick Kolesa, studium@pkol.de}
+\date{}
+
+\begin{document}
+\maketitle
+\section*{Konstanten}
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Wert \\ \midrule
+Lichtgeschwindigkeit im Vakuum & $c_0$ & \SI{3e8}{\meter \per \second} \\
+Elektrische Feldkonstante & $\epsilon_0$ & \SI{4\pi}{\volt\second\per\ampere\per\meter}\\
+Magnetische Feldkonstante & $\mu_0$ & \SI{8,85e-12}{\ampere\second\per\volt\per\meter}\\
+Freiraumwellenwiderstand & $Z_{F0}$ & $\SI{120\pi}{\ohm} \approx \SI{377}{\ohm}$ \\ 
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Nützliche mathematische Formeln}
+\paragraph{Polarkoordinaten $\longmapsto$ Re-Im}
+\begin{equation*}
+Z = \text{Re} + j\text{Im} \textrm{ mit Re } = \vert r \vert \cos \varphi \textrm{ , Im } = \vert r \vert \sin \varphi
+\end{equation*}
+\paragraph{Re-Im $\longmapsto$ Polarkoordinaten}
+\begin{equation*}
+Z = r \exp(j \varphi) \textrm{ mit } r = \sqrt{\textrm{Re}^2 + \textrm{Im}^2} \text{ , } \varphi = \left\{ \begin{array}{cc}
++\arccos \frac{\text{Re}}{r} & \textrm{Im} \geq 0 \\ 
+-\arccos \frac{\text{Re}}{r} & \textrm{Im} < 0
+\end{array} \right.
+\end{equation*}
+
+\section*{Hochfrequente Schaltungen}
+\input{s-parameter}
+\input{leitungstheorie}
+\input{smith}
+\input{bauelemente}
+
+\section*{Maxwellsche Gleichungen}
+
+\section*{Ebene Wellen}
+\paragraph{Skineffekt} Bei $\Delta z = 1\delta$: Feldstärke $E_0$ fällt auf $0,37 E_0$ ab.
+\begin{equation*}
+\delta = \sqrt{\frac{2}{\omega \mu \kappa}}
+\end{equation*}
+
+\section*{Wellenausbreitung}
+
+\section*{Antennen}
+
+\end{document}

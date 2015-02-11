@@ -1,0 +1,23 @@
+﻿\section*{Wichtige Konstanten und Formelzeichen}
+Freiraumwellenwiderstand & $Z_{F0}$ & $\unit[120\pi]{\Omega} = \unit[377]{\Omega}$
+Bezugswellenwiderstand & $Z_0$ & $\unit[50]{\Omega}$ sofern nichts angegeben ist
+Lichtgeschwindigkeit im Vakuum & $c_0$ & \unitfrc[3\cdot 10^8]{m}{s}
+
+\section*{Hochfrequente Schaltungen}
+\subsection*{S-Parameter}
+
+\subsection*{Leitungstheorie}
+\paragraph[Prinzip der durchgehenden Wirkleistung]
+
+\subsection*{Smith-Diagramm}
+\paragraph[]
+
+\subsection*{Bauelemente}
+
+\subsection*{Planare Schaltungen}
+
+\section*{Maxwellsche Gleichungen}
+
+\section*{Ebene Wellen}
+
+\section*{Antennen und Wellenausbreitung}

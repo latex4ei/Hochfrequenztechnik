@@ -1,0 +1,80 @@
+\begin{description}
+\item[Polarkoordinaten $\longmapsto$ Kartesisch]
+\begin{equation*}
+Z = \Re + j\Im \qquad \Re = |r| \cos \varphi \qquad \Im = |r| \sin \varphi
+\end{equation*}
+
+\item[Kartesisch $\longmapsto$ Polarkoordinaten]
+\begin{equation*}
+Z = r e^{j \varphi} \qquad r = \sqrt{\text{Re}^2 + \text{Im}^2} \qquad \varphi = \left\{ \begin{array}{cc}
++\arccos \frac{\Re}{r} & \Im \geq 0 \\ 
+-\arccos \frac{\Re}{r} & \Im < 0
+\end{array} \right.
+\end{equation*}
+
+\item[Dezibel]
+\begin{equation*}
+\begin{array}{cc}
+\SI{1}{\neper} = \SI{8,686}{\dB} & \SI{0}{\dBd} = \SI{2,15}{\dBi} \\ 
+\SI{1}{\watt} = \SI{30}{\dBm} = \SI{0}{\dB} & \SI{1}{\milli\watt} = \SI{0}{\dBm} = \SI{-30}{\dB} \\
+ & \\
+P_{\si{\dB}} = 10\log_{10}\left( P_{\si{\watt}} \right) & P_{\si{\watt}} = 10^{\left( \frac{P_{\si{\dB}}}{10} \right)} \\
+U_{\si{\dB}} = 20\log_{10}\left( U_{\si{\volt}} \right) & U_{\si{\volt}} = 10^{\left( \frac{U_{\si{\dB}}}{20} \right)} \\
+U_{\si{\dBuV}} = 107 + P_{\si{\dBm}} & \text{gilt nur für \SI{50}{\ohm}}
+\end{array}
+\end{equation*}
+
+\item[Dyaden und Vektoren (heuristisch)]
+\begin{align*}
+\overleftrightarrow{D} &= \left[
+\begin{array}{ccc}
+\vec{e}_x\vec{e}_x & \vec{e}_x\vec{e}_y & \vec{e}_x\vec{e}_z \\ 
+\vec{e}_y\vec{e}_x & \vec{e}_y\vec{e}_y & \vec{e}_y\vec{e}_z \\ 
+\vec{e}_z\vec{e}_x & \vec{e}_z\vec{e}_y & \vec{e}_z\vec{e}_z \\ 
+\end{array} \right] \qquad
+\vec{a} =  \left[
+\begin{array}{c}
+\vec{e}_x \\ 
+\vec{e}_y \\ 
+\vec{e}_z \\ 
+\end{array} \right]\\
+\intertext{Als Beispiel wird folgende Dyade nebst Vektor betrachtet:}
+\overleftrightarrow{D}_1 &= 
+\vec{e}_x\vec{e}_x + \vec{e}_x\vec{e}_y + \vec{e}_y\vec{e}_z
+=
+\left[
+\begin{array}{ccc}
+1 & 1 & 0 \\ 
+0 & 0 & 1 \\ 
+0 & 0 & 0 \\ 
+\end{array} \right],
+\vec{a}_1 = 
+\vec{e}_x - 2\vec{e}_y
+= \left[
+\begin{array}{c}
+1 \\ 
+-2 \\ 
+0 \\ 
+\end{array}\right]\\
+\vec{a}_1 \times \overleftrightarrow{D}_1 &= \left[
+\begin{array}{c}
+1 \\ 
+-2 \\ 
+0 \\ 
+\end{array}\right] \times \left[
+\begin{array}{ccc}
+1 & 1 & 0 \\ 
+0 & 0 & 1 \\ 
+0 & 0 & 0 \\ 
+\end{array} \right] =
+\left[
+\begin{array}{ccc}
+0 & 0 & 0 \\ 
+0 & 0 & 0 \\ 
+2 & 2 & 1 \\ 
+\end{array} \right]
+\intertext{Nun wandelt man noch die Matrix in die ursprüngliche Schreibweise um:}
+\vec{a}_1 \times \overleftrightarrow{D}_1 &= 2\vec{e}_z\vec{e}_x + \vec{e}_z\vec{e}_y + \vec{e}_z\vec{e}_z
+\end{align*}
+Das Skalarprodukt $\overleftrightarrow{D} \cdot \vec{a}$ entspricht einer normalen Matrix-Vektor-Multiplikation nach dem bekannten Schema \textit{Zeile mal Spalte} und ist deswegen nicht explizit aufgeführt. Man erhält einen $3\times 1$-Vektor. Das Kreuzprodukt $\vec{a} \times \overleftrightarrow{D}$ entspricht einer normalen Kreuzproduktbildung, jedoch wird jede Spalte von $\overleftrightarrow{D}$ einzeln mit $\vec{a}$ kreuzweise multipliziert. Man erhält wieder eine $3\times 3$-Matrix.
+\end{description}

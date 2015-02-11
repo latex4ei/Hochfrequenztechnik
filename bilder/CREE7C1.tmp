@@ -1,0 +1,20 @@
+\node [contact,label=above:1,draw] (contact 1) at (0,1.5) {};
+\node [contact,label=below:1'] (contact 1') at (0,0) {};
+\node [contact,label=above:2] (contact 2) at (3,1.5) {};
+\node [contact,label=below:2'] (contact 2') at (3,0) {};
+
+\draw (contact 1) to [resistor] ++(left:2)
+to [voltage source={midway}] ++(down:1.5)
+to (contact 1');
+
+\draw (0.5,-.5) rectangle(2.5,2);
+
+\draw (contact 1) -- ++(0.5,0);
+\draw (contact 1') -- ++(0.5,0);
+\draw (contact 2) -- ++(-0.5,0);
+\draw (contact 2') -- ++(-0.5,0);
+
+\node at (2,1) {$\underline{S}$};
+
+\draw (contact 2) -- ++(right:0.5) to [resistor] ++(down:1.5)
+to (contact 2');

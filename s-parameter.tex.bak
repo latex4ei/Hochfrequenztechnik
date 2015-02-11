@@ -1,0 +1,43 @@
+\subsection*{S-Parameter}
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Wert \\ \midrule
+Reflexionsfaktor & $\Gamma$ & - \\
+Durchgangsdämpfung & $a_B$ &  \\
+Hineinlaufende Welle & $a$ & $\sqrt{\si{\watt}}$ \\
+Herauslaufende Welle & $b$ & $\sqrt{\si{\watt}}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{center}
+\begin{tikzpicture}[scale=0.5]
+\input{bilder/s-parameter1.tex}
+\end{tikzpicture}
+\end{center}
+
+\begin{eqnarray*}
+\left( \begin{array}{c}
+b_1 \\ 
+b_2
+\end{array} \right) = \left(
+\begin{array}{cc}
+S_{11} & S_{12} \\ 
+S_{21} & S_{22}
+\end{array} \right) \cdot
+\left( \begin{array}{c}
+a_1 \\ 
+a_2
+\end{array} \right)
+\begin{array}{cc}
+S_{11} = \frac{b_1}{a_1} & S_{12} = \frac{b_1}{a_2} \\ 
+S_{21} = \frac{b_2}{a_1} & S_{22} = \frac{b_2}{a_2}
+\end{array} 
+\end{eqnarray*}
+
+\paragraph{Umrechnung in \si{\dB}}
+\begin{equation*}
+\begin{array}{cc}
+\Gamma_1 = 20\log\frac{1}{\vert S_{11} \vert} = 10 \log \frac{1}{\vert S_{11} \vert^2} & a_{B2} = 20\log\frac{1}{\vert S_{12} \vert} = 10 \log \frac{1}{\vert S_{12} \vert^2} \\ 
+a_{B1} = 20\log\frac{1}{\vert S_{21} \vert} = 10 \log \frac{1}{\vert S_{21} \vert^2} & \Gamma_2 = 20\log\frac{1}{\vert S_{22} \vert} = 10 \log \frac{1}{\vert S_{22} \vert^2}
+\end{array}
+\end{equation*}

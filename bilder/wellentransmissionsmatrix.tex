@@ -1,0 +1,26 @@
+\begin{scope}[xshift=0]
+\draw (0,0) rectangle +(3,3) node[midway,font=\huge] {$\Sigma_1$};
+\draw[-o] (0,2.4)--+(-2,0);
+\draw[-o] (0,0.6)--+(-2,0);
+\draw[-*] (3,2.4)--+(2,0);
+\draw[-*] (3,0.6)--+(2,0);
+\end{scope}
+
+\begin{scope}[xshift=6.45cm]
+\draw (0,0) rectangle +(3,3) node[midway,font=\huge] {$\Sigma_2$};
+\draw[-] (0,2.4)--+(-2,0);
+\draw[-] (0,0.6)--+(-2,0);
+\draw[-*] (3,2.4)--+(2,0);
+\draw[-*] (3,0.6)--+(2,0);
+\end{scope}
+
+\begin{scope}[xshift=2*6.45cm]
+\draw (0,0) rectangle +(3,3) node[midway,font=\huge] {$\Sigma_3$};
+\draw[-] (0,2.4)--+(-2,0);
+\draw[-] (0,0.6)--+(-2,0);
+\draw[-o] (3,2.4)--+(2,0);
+\draw[-o] (3,0.6)--+(2,0);
+\end{scope}
+
+\draw [decorate,decoration={brace,amplitude=13pt,mirror}]
+(-2.5,-0.5) --+(21,0) node [black,midway,yshift=-1cm,font=\huge] {$\Sigma_p = \Sigma_1 \Sigma_2\Sigma_3$};

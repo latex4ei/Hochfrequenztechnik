@@ -1,0 +1,26 @@
+% Zweitor Signalfluss
+\begin{scope}[shift={(0,0)}]
+\node (A1) at (0,0) {};
+\node (B1) at (0,-0.9) {};
+\node (B2) at (2,0) {};
+\node (A2) at (2,-0.9) {};
+
+
+\draw[color=tumblau] (A1) to [short, i_>=$S_{11}$, l^=$P_2$] (B1);
+
+\draw[color=green] (B1) to [short, i_<=$S_{12}$] (A2);
+
+\draw (A2) to [short, i^>=$S_{22}$] (B2);
+
+\draw[color=green] (B2) to [short, i_<=$S_{21}$] (A1);
+
+\draw[color=green] (B2) to [short, l^=$P_1$] ++(2,0) to [short, i>=$\Gamma_\text{Last}$] ($(A2)+(2,0)$) to [short] ++(-2,0);
+
+\draw (A1) node[above] {$a_1$} to [open, *-] (A1);
+\draw (A2) node[below] {$a_2$} to [open, *-] (A2);
+\draw (B1) node[below] {$b_1$} to [open, *-] (B1);
+\draw (B2) node[above] {$b_2$} to [open, *-] (B2);
+
+\draw[->, color=red] (2.65,-0.33) arc (160:-160:0.38);
+\draw[color=red] (3,-0.45) node[] {$L(1)$};
+\end{scope}

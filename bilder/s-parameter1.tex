@@ -1,0 +1,25 @@
+\node[text centered, font=\huge] at (0,0) {$\underline{S}$};
+
+\draw (-2,-2) rectangle(2,2);
+
+\draw[-o] (2,1.1) --(4,1.1) node[anchor=south] {2};
+\draw (5,0.6) node[anchor=east,label=right:$a_2$]{};
+\draw [->] (5,0.6)--(3.5,0.6);
+%\draw (4,1.1) node[shape=circle,anchor=west,draw,label=above:2]{};
+
+\draw (-2,1.1) --(-4,1.1);
+\draw (-5,0.6) node[anchor=west,label=left:$a_1$]{};
+\draw [->] (-5,0.6)--(-3.5,0.6);
+\draw (-4,1.1) node[shape=circle,anchor=east,draw,label=above:1]{};
+
+\draw (2,-1.1) --(4,-1.1);
+\draw (5,-0.6) node[anchor=east,label=right:$b_2$]{};
+\draw [->] (3.5,-0.6)--(5,-0.6);
+\draw (4,-1.1) node[shape=circle,anchor=west,draw,label=below:2']{};
+
+\draw (-2,-1.1) --(-4,-1.1);
+\draw (-5,-0.6) node[anchor=west,label=left:$b_1$]{};
+\draw [<-] (-5,-0.6)--(-3.5,-0.6);
+\draw (-4,-1.1) node[shape=circle,anchor=east,draw,label=below:1']{};
+
+\node at (0,-3){$a,b = \left[ \sqrt{\si{\watt}} \right]$};

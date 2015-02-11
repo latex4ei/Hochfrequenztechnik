@@ -1,0 +1,55 @@
+\subsection*{Leitungstheorie}
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Wert \\ \midrule
+Bezugswellenwiderstand & $Z_0$ & \SI{50}{\ohm} \\
+Leitungswellenwiderstand & $Z_L$ &  \si{\ohm}\\
+Dämpfungsfaktor & $\alpha$ & \si{\neper\per\meter} \\
+Phasenfaktor & $\beta$ & \si{\rad\per\meter} \\
+Reflexionsfaktor & $\Gamma$ & - \\
+Voltage Standing Wave Ratio & VSWR & - \\
+Induktivitätsbelag & $L'$ & \si{\henry\per\meter} \\
+Kapazitätsbelag & & \si{\farad\per\meter} \\
+Widerstandsbelag & $R'$ & \si{\ohm\per\meter} \\
+Leitwertsbelag & $G'$ & \si{\siemens\per\meter} \\
+Außenleiterdurchmesser & $D$  & \si{\meter} \\
+Innenleiterdurchmesser & $d$ & \si{\meter} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Allgemeine Formeln}
+\begin{eqnarray*}
+	Z_L = \sqrt{\frac{R' + j \omega L'}{G' + j \omega C'}} \approx \sqrt{\frac{L'}{C'}} = \sqrt{\frac{\mu_0 \mu_r}{\epsilon_0 \epsilon_r}} \\
+	\gamma = \alpha + j \beta = \sqrt{(R' + j \omega L')(G' + j \omega C')} \\
+	\beta = \frac{2\pi}{\lambda} = \omega \sqrt{L' C'} = \omega \sqrt{\epsilon_0 \epsilon_r \mu_0 \mu_r} \\
+	v_{\textrm{Phase}} = \frac{1}{\sqrt{L' C'}} = \frac{c_o}{\sqrt{\mu_r \epsilon_r}} \textrm{ mit } c_0 = \frac{1}{\sqrt{\epsilon_0 \mu_0}} \\
+	\Gamma = \frac{b_i}{a_i} = \frac{U_r}{U_h} = \frac{I_r}{I_h} = \frac{Z_0 - Z_L}{Z_0 + Z_L} \\
+	\textrm{VSWR} = \frac{1+|r|}{1-|r|} = \frac{U_\textrm{max}}{U_\textrm{min}}
+\end{eqnarray*}
+
+\paragraph{Koaxialleitung}
+\begin{eqnarray*}
+\begin{array}{cc}
+L' = \frac{\mu_0 \mu_r}{2\pi} \ln(\frac{D}{d}) & C' = \frac{2\pi \epsilon_0 \epsilon_r}{\ln(\frac{D}{d})} \\ 
+R' = \sqrt{\frac{\omega \mu}{2 \kappa}} \cdot \frac{1}{\pi}\left( \frac{1}{D} + \frac{1}{d} \right) & G' = \frac{2\pi\omega\epsilon''}{\ln(\frac{D}{d})}
+\end{array} \\
+Z_L \approx \sqrt{\frac{L'}{C'}} = Z_{F0} \frac{\ln(\frac{D}{d})}{2\pi\sqrt{\epsilon_r}}
+\end{eqnarray*}
+
+\paragraph{Mikrostreifenleitung} Substrathöhe $h$, Leiterbreite $w$, effektive Leiterbreite $w_\text{eff}$, effektive Dielektrizitätszahl $\epsilon_{r,\text{eff}}$.
+\begin{eqnarray*}
+Z_L = \frac{Z_{F0}}{\sqrt{\epsilon_{r,\text{eff}}}} \cdot \frac{h}{w_\text{eff}} \\
+w_\text{eff} = \frac{Z_{F0}}{Z_L} \cdot \frac{h}{\sqrt{\epsilon_{r,\text{eff}}}} \\
+w_\text{eff} = w + \frac{2h}{\pi} \cdot \left\{ 1 + \ln\left(2\pi ( \frac{w}{h} + 0,92) \right) \right\} \\
+\sqrt{\epsilon_{r,\text{eff}}} = \frac{\epsilon_r + 1}{2} + \frac{\epsilon_r - 1}{2} \cdot \frac{1}{\sqrt{1 + 10 \frac{h}{w}}} \\
+f_{c,\text{HE1}} = \frac{c_0}{2w_\text{eff}\sqrt{\epsilon_{r,\text{eff}}}} 
+\end{eqnarray*}
+
+\paragraph{Hohlleiter}
+
+\paragraph{Zweitore}
+\begin{itemize}
+\item Leistungsanpassung: $Z_L \mbeq Z^*_G$
+\item Maximale Generatorleistung: $P_\text{max} = \frac{|U_0|^2}{8R}$ mit Innenwiderstand $R$.
+\end{itemize}

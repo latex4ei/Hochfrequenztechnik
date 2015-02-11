@@ -1,0 +1,137 @@
+\subsection*{Theoreme der Feldtheorie}
+\begin{center}
+\begin{tabular}{ccc} \toprule
+Bezeichnung & Symbol & Einheit \\ \midrule
+Beobachtungspunkt & $\vec{r}$ & \\
+Quellpunkt & $\vec{r}'$ & \\
+Magnetisches Vektorpotential & $\vec{A}$ & \\
+Magnetisches Skalarpotential & $\psi$ & \\
+Elektrisches Vektorpotential & $\vec{F}$ & \\
+Elektrisches Skalarpotential & $\phi$ & \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{center}
+\begin{minipage}[c]{0.4\linewidth}
+\begin{tikzpicture}[scale=0.5]
+	\input{bilder/gebiet.tex}
+\end{tikzpicture}
+\end{minipage}
+\begin{minipage}[c]{0.5\linewidth}
+\paragraph{Eindeutigkeitstheorem} Normalenvektoren $\vec{n}$ zeigen immer ins Lösungsgebiet, elektrischer Strom $\vec{J}$ in/auf PEC strahlt kein Feld ab, magnetischer Strom $\vec{M}$ in/auf PMC strahlt kein Feld ab.
+\end{minipage}
+\end{center}
+
+\begin{description}
+\item[Magnetisches Vektorpotential]
+\begin{align*}
+\vec{B} &= \rot \vec{A} \\
+\vec{E} &= -j \omega \vec{A} - \grad\phi
+\intertext{mit Lorenz-Eichung}
+\div\vec{A} &+ j\omega\mu\epsilon\phi = 0
+\intertext{folgt die inhomogene, vektorielle Helmholtz-Gleichung}
+\div\grad\vec{A} &+ k^2 \vec{A} = -\mu\vec{J}
+\intertext{folgt die inhomogene, skalare Helmholtz-Gleichung}
+\div\grad\phi &+ k^2 \phi = -\frac{\rho}{\epsilon}
+\end{align*}
+
+\item[Randbedingungen]
+\begin{align*}
+\text{PEC: }&\vec{n}\times\vec{E} = 0\\
+\text{PMC: }&\vec{n}\times\vec{H} = 0
+\end{align*}
+
+\item[Elektrisches Vektorpotential]
+\begin{align*}
+\vec{D} &= -\rot F\\
+\vec{H} &= -j \omega \vec{F} - \grad\psi
+\intertext{mit Lorenz-Eichung}
+\div\vec{F} &+ j\omega\mu\epsilon\psi = 0
+\intertext{folgt die inhomogene, vektorielle Helmholtz-Gleichung}
+\div\grad\vec{F} &+ k^2 \vec{F} = -\epsilon\vec{M}
+\intertext{folgt die inhomogene, skalare Helmholtz-Gleichung}
+\div\grad\psi &+ k^2 \psi = -\frac{\rho_m}{\mu}
+\end{align*}
+
+\item[Felddarstellung über Potentiale]
+\begin{equation*}
+\vec{E} (\vec{r}) = \vec{E}_e (\vec{r}) + \vec{E}_m (\vec{r}) \qquad \vec{H} (\vec{r}) = \vec{H}_e (\vec{r}) + \vec{H}_m (\vec{r})
+\end{equation*}
+\begin{equation*}
+\begin{array}{c}
+\toprule
+\text{Elektrische Ströme} \\ 
+\midrule
+\vec{H}_e (\vec{r}) = \frac{1}{\mu} \rot{\vec{A}(\vec{r})} \\ 
+\vec{E}_e (\vec{r}) = -j\omega \vec{A} -\grad{\phi} = -j\omega \left( \vec{A}(\vec{r}) + \frac{1}{k^2} \grad\div\vec{A}(\vec{r}) \right) \\
+\bottomrule
+\end{array}
+\end{equation*}
+\begin{equation*}
+\begin{array}{c}
+\toprule
+\text{Magnetische Ströme} \\
+\midrule
+\vec{E}_m (\vec{r}) = - \frac{1}{\epsilon} \rot{\vec{F}(\vec{r})} \\ 
+\vec{H}_m (\vec{r}) = -j\omega \vec{F} -\grad{\psi} = -j\omega \left( \vec{F}(\vec{r}) + \frac{1}{k^2} \grad\div\vec{F}(\vec{r}) \right) \\
+\bottomrule
+\end{array}
+\end{equation*}
+
+\item[Duale Größen] Felder elektrischer Quellen $\leftrightarrow$ Felder magnetischer Quellen
+\begin{center}
+\begin{tabular}{cc} \toprule
+Elektrisch & Magnetisch \\ \midrule
+$\vec{E_e}$ & $\vec{H_m}$ \\
+$\vec{H_e}$ & $-\vec{E_m}$ \\
+$\vec{A}$ & $\vec{F}$\\
+$\phi$ & $\psi$ \\
+$\vec{J}$ & $\vec{M}$ \\
+$\rho$ & $\rho_m$\\
+$\mu$ & $\epsilon$\\
+$\epsilon$ & $\mu$\\
+$k$ & $k$\\
+$Z_F$ & $Z_F^{-1}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\item[Greensche Funktionen] Dirac-Impuls-förmige Anregung
+%\begin{align*}
+%G(\vec{r},\vec{r'}) &= \frac{\exp(-jk|\vec{r}-\vec{r'}|)}{4\pi|\vec{r}-\vec{r'}|} \\
+%\overleftrightarrow{G}^A(\vec{r},\vec{r'}) &= \mu\frac{\exp(-jk|\vec{r}-\vec{r'}|)}{4\pi|\vec{r}-\vec{r'}|} \overleftrightarrow{I}\\
+%\overleftrightarrow{G}^F(\vec{r},\vec{r'}) &= \epsilon\frac{\exp(-jk|\vec{r}-\vec{r'}|)}{4\pi|\vec{r}-\vec{r'}|} \overleftrightarrow{I}\\
+%G^E_J(\vec{r},\vec{r'}) &= -j\omega\mu\left[\left( I + \frac{1}{k^2}\grad\grad \right) \frac{\exp(-jk|\vec{r}-\vec{r'}|)}{4\pi|\vec{r}-\vec{r'}|}\right]\\
+%\overleftrightarrow{G}^H_J(\vec{r},\vec{r'}) &= \grad\frac{\exp(-jk|\vec{r}-\vec{r'}|)}{4\pi|\vec{r}-\vec{r'}|}\times \overleftrightarrow{I}\\
+%\overleftrightarrow{G}^E_M(\vec{r},\vec{r'}) &= -\grad\frac{\exp(-jk|\vec{r}-\vec{r'}|)}{4\pi|\vec{r}-\vec{r'}|}\times \overleftrightarrow{I}\\
+%\overleftrightarrow{G}^H_M(\vec{r},\vec{r'}) &= -j\omega\epsilon\left[\left( \overleftrightarrow{I} + \frac{1}{k^2}\grad\grad \right) \frac{\exp(-jk|\vec{r}-\vec{r'}|)}{4\pi|\vec{r}-\vec{r'}|}\right]\\
+%\end{align*}
+\begin{align*}
+G(\vec{r},\vec{r'}) &= \frac{\exp(-jk|\vec{r}-\vec{r'}|)}{4\pi|\vec{r}-\vec{r'}|} \\
+\overleftrightarrow{G}^A(\vec{r},\vec{r'}) &= \mu G(\vec{r},\vec{r'}) \overleftrightarrow{I}\\
+\overleftrightarrow{G}^F(\vec{r},\vec{r'}) &= \epsilon G(\vec{r},\vec{r'}) \overleftrightarrow{I}\\
+G^E_J(\vec{r},\vec{r'}) &= -j\omega\mu\left[\left( I + \frac{1}{k^2}\grad\div \right) G(\vec{r},\vec{r'}) \right]\\
+\overleftrightarrow{G}^H_J(\vec{r},\vec{r'}) &= \grad G(\vec{r},\vec{r'}) \times \overleftrightarrow{I}\\
+\overleftrightarrow{G}^E_M(\vec{r},\vec{r'}) &= -\grad G(\vec{r},\vec{r'}) \times \overleftrightarrow{I}\\
+\overleftrightarrow{G}^H_M(\vec{r},\vec{r'}) &= -j\omega\epsilon\left[\left( \overleftrightarrow{I} + \frac{1}{k^2}\grad\div \right) G(\vec{r},\vec{r'}) \right]\\
+\end{align*}
+\begin{center}
+{\begin{minipage}[t]{0.2\textwidth}
+	\begin{tikzpicture}[every node/.style={scale=0.9}]
+		\input{bilder/greenfkt.tex}
+	\end{tikzpicture}
+\end{minipage}
+\begin{minipage}[t]{0.2\textwidth}
+	\begin{tikzpicture}[every node/.style={scale=0.9}]
+		\input{bilder/greenfkt2.tex}
+	\end{tikzpicture}
+\end{minipage}}
+\end{center}
+
+\item[Spiegelungsprinzip] An der Spiegelungsache löschen sich die entsprechenden Felder aus, um die Randbedingung zu erfüllen.
+\begin{center}
+\begin{tikzpicture}[scale=1]
+	\input{bilder/spiegelungsprinzip.tex}
+\end{tikzpicture}
+\end{center}
+\end{description}

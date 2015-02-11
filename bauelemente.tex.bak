@@ -1,0 +1,5 @@
+\subsection*{Bauelemente und Schaltungen}
+\paragraph{Schwingkreise}
+\begin{equation*}
+f_\text{res} = \frac{1}{2\pi \sqrt{LC}}
+\end{equation*}

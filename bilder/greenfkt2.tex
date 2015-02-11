@@ -1,0 +1,51 @@
+\matrix (m) [
+	matrix of nodes, 
+    column sep=1cm,
+    row sep=0.5cm,
+    nodes={
+    	draw=none,
+    	},
+    ]{
+  	$\vec{E}_m$
+  &
+  	
+  &
+  	
+  \\
+  	
+  &
+  	$\overleftrightarrow{G}^E_M$
+  &
+  	
+  \\
+  	$\vec{F}$
+  &
+	$\overleftrightarrow{G}^F$
+  &
+  	$\vec{M}$
+  \\
+  	
+  &
+  	$\overleftrightarrow{G}^H_M$
+  &
+  	
+  \\
+  	$\vec{H}_m$
+  &
+
+  &
+  	
+  \\
+  };
+
+{
+	\path[line width=1pt] (m-3-3) edge (m-3-2);
+	\path[line width=1pt,->] (m-3-2) edge (m-3-1);
+	\path[line width=1pt] (m-3-3) edge (m-2-2);
+	\path[line width=1pt,->] (m-2-2) edge (m-1-1);
+	\path[line width=1pt] (m-3-3) edge (m-4-2);
+	\path[line width=1pt,->] (m-4-2) edge (m-5-1);
+	\path[line width=1pt,->] (m-3-1) edge (m-1-1);
+	\path[line width=1pt,->] (m-3-1) edge (m-5-1);
+    };
+ 
